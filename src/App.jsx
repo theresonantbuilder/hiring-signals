@@ -6,6 +6,7 @@ import Services from "./Services";
 import CaseStudies from "./CaseStudies";
 import Advisors from "./Advisors";
 import Contact from "./Contact";
+import SignalAudit from "./SignalAudit";
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -104,7 +105,7 @@ export default function App() {
             <Link to="/advisors">Advisors</Link>
             <Link to="/contact">Contact</Link>
           </div>
-          <Link to="/contact" className="nav-cta" style={{ textDecoration: 'none' }}>Request a Signal Audit</Link>
+          <Link to="/audit" className="nav-cta" style={{ textDecoration: 'none' }}>Request a Signal Audit</Link>
         </nav>
 
         {/* Route Content */}
@@ -115,12 +116,13 @@ export default function App() {
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/advisors" element={<Advisors />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/audit" element={<SignalAudit />} />
         </Routes>
         
         {/* Final CTA (Global Footer) */}
         <div className="footer-cta">
             <h4 className="footer-title">Ready to isolate the signal?</h4>
-            <Link to="/contact" className="footer-button" style={{ textDecoration: 'none', display: 'inline-block' }}>
+            <Link to="/audit" className="footer-button" style={{ textDecoration: 'none', display: 'inline-block' }}>
               Request a Signal Audit
             </Link>
         </div>
