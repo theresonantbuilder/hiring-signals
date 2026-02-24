@@ -77,12 +77,11 @@ const Methodology = () => {
         </div>
 
         {/* The Signal Path Phases */}
-        <div className="phases-container" style={{ position: 'relative' }}>
+        <div className="phases-container">
+          <div className="connector-line"></div>
           {[content.phase1, content.phase2, content.phase3].map((phase, index) => (
-            <div key={index} className="phase-item" style={{ display: 'flex', gap: '40px', marginBottom: '100px', position: 'relative' }}>
-              <div className="phase-number" style={{ 
-                fontSize: '4rem', fontWeight: '900', color: 'rgba(255,255,255,0.9)', lineHeight: '1', minWidth: '80px'
-              }}>
+            <div key={index} className="phase-item">
+              <div className="phase-number">
                 0{index + 1}
               </div>
               
