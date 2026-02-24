@@ -21,33 +21,32 @@ const FrictionCheckpoint = ({ question }) => (
   ------------------------------------------------------------------
 */
 
+// Shared style for layer cards to control transparency centrally
+const layerCardStyle = {
+  backgroundColor: 'rgba(255, 255, 255, 0.07)',
+  borderRadius: '24px',
+  padding: '60px 40px',
+  textAlign: 'center',
+  border: '1px solid rgba(255, 255, 255, 0.25)'
+};
+
 const SourcingLayer = () => (
   <section className="layer-section">
     <div className="container">
-      <h3 className="layer-title">01 // The Sourcing Layer</h3>
-      <div className="layer-grid">
-        <div className="card card-noise">
-          <h4 className="card-title">THE NOISE (Literal Search)</h4>
-          <div className="card-content">
-            <div className="code-block">Query: "Construction Project Manager"</div>
-            <div className="highlight-text">! 4,281 broad matches found</div>
-            <p className="quote-text">"Includes Retail PMs, IT Consultants, and out-of-state applicants..."</p>
-            <div className="outcome-text">Time Loss: 12+ Management Hours</div>
-          </div>
-        </div>
-        <div className="card card-signal">
-          <h4 className="card-title">THE SIGNAL (Semantic Inference)</h4>
-          <div className="card-content">
-            <div className="code-block">Intent: "Licensed FL Leads / $10M+ Ops / Stable Tenure"</div>
-            <div className="highlight-text">✓ 8 Work-Ready Candidates</div>
-            <ul className="list-text">
-              <li>• 100% Local (Verified)</li>
-              <li>• Active Commercial Licenses</li>
-              <li>• 4.2yr Avg. Tenure</li>
-            </ul>
-            <div className="outcome-text">Selection Time: 15 Minutes</div>
-          </div>
-        </div>
+      <div style={layerCardStyle}>
+        <h3 className="layer-title" style={{ color: 'white', marginBottom: '40px' }}>01 — Resume Noise Is Eating Your Team’s Time</h3>
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>Is this happening now?</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px auto' }}>
+          Your ops leaders are reviewing dozens of resumes that don’t match real job-site needs.
+        </p>
+
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What is possible</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '15px', maxWidth: '800px', margin: '0 auto 15px auto' }}>
+          Signal-based filtering that surfaces only work-ready candidates aligned to your actual operating environment.
+        </p>
+        <p style={{ color: 'white', fontStyle: 'italic', fontSize: '1.1rem', fontWeight: '600' }}>
+          <span style={{ color: '#3b82f6' }}>Result:</span> Managers spend 15 minutes reviewing viable candidates — not 4 hours sorting noise.
+        </p>
       </div>
     </div>
   </section>
@@ -56,32 +55,20 @@ const SourcingLayer = () => (
 const NotificationLayer = () => (
   <section className="layer-section">
     <div className="container">
-      <h3 className="layer-title">02 // The Notification Layer</h3>
-      <div className="layer-grid">
-        <div className="card card-noise">
-          <h4 className="card-title">Inbox Stagnation</h4>
-          <div className="card-content">
-            <div className="code-block">Email Alert: "New Applicant" - Sent to generic HR inbox.</div>
-            <ul className="list-text">
-              <li>• Data sits unread for 3+ days</li>
-              <li>• Zero context on candidate urgency</li>
-              <li>• 40% talent drop-out rate</li>
-            </ul>
-            <div className="outcome-text">Outcome: Lost Competitive Edge</div>
-          </div>
-        </div>
-        <div className="card card-signal">
-          <h4 className="card-title">Instant Signal Routing</h4>
-          <div className="card-content">
-            <div className="code-block"><span className="bold-underline">SLACK/SMS:</span> "Priority: J. Doe. 12yr Industrial Exp. Route to PM Lead."</div>
-            <ul className="list-text">
-              <li>• Real-time decision maker routing</li>
-              <li>• Context-rich alerts & experience summaries</li>
-              <li>• Immediate automated SMS engagement</li>
-            </ul>
-            <div className="outcome-text">Outcome: First-to-Market Speed</div>
-          </div>
-        </div>
+      <div style={layerCardStyle}>
+        <h3 className="layer-title" style={{ color: 'white', marginBottom: '40px' }}>02 — Applicants Go Cold Because No One Responded Fast Enough</h3>
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What’s happening now</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px auto' }}>
+          Resumes hit a shared inbox. No urgency. No routing. Delays cost you talent.
+        </p>
+
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What is possible</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '15px', maxWidth: '800px', margin: '0 auto 15px auto' }}>
+          Priority routing + automated candidate engagement so decision-makers respond in hours, not days.
+        </p>
+        <p style={{ color: 'white', fontStyle: 'italic', fontSize: '1.1rem', fontWeight: '600' }}>
+          <span style={{ color: '#3b82f6' }}>Result:</span> First-to-market speed without hiring a recruiting coordinator.
+        </p>
       </div>
     </div>
   </section>
@@ -90,32 +77,20 @@ const NotificationLayer = () => (
 const VerificationLayer = () => (
   <section className="layer-section">
     <div className="container">
-      <h3 className="layer-title">03 // The Verification Layer</h3>
-      <div className="layer-grid">
-        <div className="card card-noise">
-          <h4 className="card-title">Administrative Debt</h4>
-          <div className="card-content">
-            <div className="code-block">"Do you have your FL license? Please email a copy."</div>
-            <ul className="list-text">
-              <li>• Manual document back-and-forth</li>
-              <li>• 48-hour qualification lag</li>
-              <li>• High-cost managers performing data entry</li>
-            </ul>
-            <div className="outcome-text">Outcome: 65% Interview Waste</div>
-          </div>
-        </div>
-        <div className="card card-signal">
-          <h4 className="card-title">Agentic Verification</h4>
-          <div className="card-content">
-            <div className="code-block">"License #123456 Collected & Matched. Ready for hire."</div>
-            <ul className="list-text">
-              <li>• 24/7 Autonomous vetting</li>
-              <li>• Verified Attestation: Visa & Location</li>
-              <li>• Auto-scheduling for 100% qualified talent</li>
-            </ul>
-            <div className="outcome-text">Outcome: 100% Interview Utility</div>
-          </div>
-        </div>
+      <div style={layerCardStyle}>
+        <h3 className="layer-title" style={{ color: 'white', marginBottom: '40px' }}>03 — Qualification Happens Too Late</h3>
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What’s happening now</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px auto' }}>
+          Licensing, eligibility, or relocation issues show up after interviews.
+        </p>
+
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What is possible</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '15px', maxWidth: '800px', margin: '0 auto 15px auto' }}>
+          Automated pre-verification and structured qualification before time is invested.
+        </p>
+        <p style={{ color: 'white', fontStyle: 'italic', fontSize: '1.1rem', fontWeight: '600' }}>
+          <span style={{ color: '#3b82f6' }}>Result:</span> Only qualified candidates reach your hiring managers.
+        </p>
       </div>
     </div>
   </section>
@@ -124,32 +99,20 @@ const VerificationLayer = () => (
 const EvaluationLayer = () => (
   <section className="layer-section">
     <div className="container">
-      <h3 className="layer-title">04 // The Evaluation Layer</h3>
-      <div className="layer-grid">
-        <div className="card card-noise">
-          <h4 className="card-title">Subjective "Vibe" Hiring</h4>
-          <div className="card-content">
-            <div className="code-block">"He seemed like a good fit, but I can't recall his niche experience."</div>
-            <ul className="list-text">
-              <li>• Decisions based on fragmented memory</li>
-              <li>• Zero objective data comparison</li>
-              <li>• High bias, high variance outcomes</li>
-            </ul>
-            <div className="outcome-text">Outcome: "Gut-Feel" Risk</div>
-          </div>
-        </div>
-        <div className="card card-signal">
-          <h4 className="card-title">Evidence Extraction</h4>
-          <div className="card-content">
-            <div className="code-block"><span className="bold-underline signal-highlight">SIGNAL:</span> "Proficient in FL Lien Law. Verified Multi-entity payroll."</div>
-            <ul className="list-text">
-              <li>• Transcription & semantic competency mapping</li>
-              <li>• Searchable database of candidate answers</li>
-              <li>• Objective scoring across the hiring team</li>
-            </ul>
-            <div className="outcome-text">Outcome: Hiring Certainty</div>
-          </div>
-        </div>
+      <div style={layerCardStyle}>
+        <h3 className="layer-title" style={{ color: 'white', marginBottom: '40px' }}>04 — Hiring Decisions Are Based on Memory</h3>
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>Is this happening now</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px auto' }}>
+          Notes live in email threads. Interview insights get lost.
+        </p>
+
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What is possible</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '15px', maxWidth: '800px', margin: '0 auto 15px auto' }}>
+          Structured competency extraction and searchable candidate data across your team.
+        </p>
+        <p style={{ color: 'white', fontStyle: 'italic', fontSize: '1.1rem', fontWeight: '600' }}>
+          <span style={{ color: '#3b82f6' }}>Result:</span> Objective comparison. Less bias. Higher certainty.
+        </p>
       </div>
     </div>
   </section>
@@ -158,32 +121,20 @@ const EvaluationLayer = () => (
 const ComplianceLayer = () => (
   <section className="layer-section last-layer">
     <div className="container">
-      <h3 className="layer-title">05 // The Selection & Compliance Layer</h3>
-      <div className="layer-grid">
-        <div className="card card-noise">
-          <h4 className="card-title">The Paperwork Chasm</h4>
-          <div className="card-content">
-            <div className="code-block">"Offer letter sent... waiting on signature and I-9."</div>
-            <ul className="list-text">
-              <li>• Days lost in manual document tracking</li>
-              <li>• High risk of 'Ghosting' before Day 1</li>
-              <li>• Compliance gaps in high-regulation zones</li>
-            </ul>
-            <div className="outcome-text">Outcome: Final-Mile Attrition</div>
-          </div>
-        </div>
-        <div className="card card-signal">
-          <h4 className="card-title">Automated Closing</h4>
-          <div className="card-content">
-            <div className="code-block">"Offer Accepted. Compliance Verified. Day 1 Ready."</div>
-            <ul className="list-text">
-              <li>• Instant digital offer & I-9 workflows</li>
-              <li>• Automated background & credentialing triggers</li>
-              <li>• Continuous engagement to prevent drop-out</li>
-            </ul>
-            <div className="outcome-text">Outcome: 98% Activation Rate</div>
-          </div>
-        </div>
+      <div style={layerCardStyle}>
+        <h3 className="layer-title" style={{ color: 'white', marginBottom: '40px' }}>05 — Offers Stall. Candidates Ghost.</h3>
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What’s happening now</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '30px', maxWidth: '800px', margin: '0 auto 30px auto' }}>
+          Manual paperwork. Delays between offer and Day 1.
+        </p>
+
+        <h4 style={{ color: '#3b82f6', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>What is possible</h4>
+        <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#cbd5e1', marginBottom: '15px', maxWidth: '800px', margin: '0 auto 15px auto' }}>
+          Automated digital offers and compliance workflows.
+        </p>
+        <p style={{ color: 'white', fontStyle: 'italic', fontSize: '1.1rem', fontWeight: '600' }}>
+          <span style={{ color: '#3b82f6' }}>Result:</span> Higher activation rates and less last-minute attrition.
+        </p>
       </div>
     </div>
   </section>
@@ -198,7 +149,7 @@ const Home = () => {
           HIRING <span className="italic-bold">SIGNALS</span><span className="text-blue">.ai</span>
         </h1>
         <p className="hero-subtitle">
-          Advisory & Applied Hiring Intelligence
+          Fractional Recruiter & Hiring Systems Advisor
         </p>
         <div className="hero-content">
           <div className="hero-badge">
@@ -207,25 +158,33 @@ const Home = () => {
             </h2>
           </div>
           <p className="hero-description">
-            In a world where AI allows thousands of applicants to look perfect on paper, your biggest risk isn't a lack of candidates—it's a system that can't tell the difference between <span className="text-white">"Paper-Perfect"</span> and <span className="text-blue bold">"Work-Ready."</span>
+            Embedded recruiting support for growing teams — identifying hiring friction and introducing practical, modern tools where they create real lift. 
           </p>
         </div>
       </div>
 
+      {/* Section Header */}
+      <div className="container" style={{ marginTop: '80px', marginBottom: '40px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white' }}>
+          The 5 Hiring Leaks Costing Growing Companies Time & Money
+        </h2>
+      </div>
+
       {/* Layers & Checkpoints */}
       <SourcingLayer />
-      <FrictionCheckpoint question="Are your Project Managers spending 4 hours a week reviewing resumes that don't match their job site needs?" />
+      <FrictionCheckpoint question="Diagnostic Question: Are your most expensive people spending time screening resumes?" />
       
       <NotificationLayer />
-      <FrictionCheckpoint question="Has a top-tier candidate ever signed with a competitor because your hiring manager didn't check their email in time?" />
+      <FrictionCheckpoint question="Diagnostic Question: Has a strong candidate ever signed elsewhere while your team was “too busy”?" />
       
       <VerificationLayer />
-      <FrictionCheckpoint question="How many 'Qualified' interviews have you finished only to realize they didn't have the required licensing?" />
+      <FrictionCheckpoint question="Diagnostic Question: How many interviews have ended with “Oh… they don’t have that requirement”?" />
       
       <EvaluationLayer />
-      <FrictionCheckpoint question="Can you search a database of exactly what every candidate said about their multi-entity payroll experience, or is it lost in notes?" />
+      <FrictionCheckpoint question="Diagnostic Question: Can your team search what every candidate said about a specific skill?" />
       
       <ComplianceLayer />
+      <FrictionCheckpoint question="Diagnostic Question: How many accepted offers didn’t make it to Day 1?" />
     </>
   );
 };
