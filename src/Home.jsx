@@ -160,6 +160,11 @@ const Home = () => {
           <p className="hero-description">
             Embedded recruiting support for growing teams — identifying hiring friction and introducing practical, modern tools where they create real lift. 
           </p>
+          <div className="hero-badge" style={{ marginTop: '50px' }}>
+            <h2 className="badge-text">
+              “I partner with growing teams to strengthen their hiring — embedding where needed and/or implementing practical technology that improves clarity and outcomes." ~~ Paul Duplantis
+            </h2>
+          </div>
         </div>
       </div>
 
