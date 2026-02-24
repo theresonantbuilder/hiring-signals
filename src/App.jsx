@@ -99,10 +99,9 @@ export default function App() {
         <nav className="main-nav">
           <div className="nav-links">
             <Link to="/">Home</Link>
-            <Link to="/methodology">Methodology</Link>
-            <Link to="/services">Services</Link>
+            <Link to="/directory">Provider Directory</Link>
             <Link to="/case-studies">Case Studies</Link>
-            <Link to="/advisors">Advisors</Link>
+            <Link to="/advisors">About Paul</Link>
             <Link to="/contact">Contact</Link>
           </div>
           <Link to="/audit" className="nav-cta" style={{ textDecoration: 'none' }}>Request a Signal Audit</Link>
@@ -112,7 +111,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/methodology" element={<Methodology />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/directory" element={<Services />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/advisors" element={<Advisors />} />
           <Route path="/contact" element={<Contact />} />
