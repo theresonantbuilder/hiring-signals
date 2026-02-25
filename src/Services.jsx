@@ -10,37 +10,37 @@ const directoryData = [
         name: "ATS / Core System (foundation layer)",
         description: "These systems become your “system of record.” Most other tools plug into these.",
         providers: [
-          { name: "Greenhouse", category: "ATS", lift: "High", strengthens: "workflow consistency, reporting baseline", mainCategory: "ATS" },
-          { name: "Ashby", category: "ATS + Analytics", lift: "High", strengthens: "structured pipeline + reporting depth", mainCategory: "ATS" },
-          { name: "Lever", category: "ATS/CRM", lift: "High", strengthens: "sourcing-to-pipeline continuity", mainCategory: "ATS" },
-          { name: "Workable", category: "ATS", lift: "Medium", strengthens: "SMB-friendly hiring workflow", mainCategory: "ATS" },
-          { name: "Teamtailor", category: "ATS/Brand", lift: "Medium", strengthens: "candidate experience + lightweight ATS", mainCategory: "ATS" },
-          { name: "Breezy HR", category: "ATS", lift: "Low–Medium", strengthens: "speed for small teams", mainCategory: "ATS" },
-          { name: "iCIMS", category: "ATS", lift: "High", strengthens: "enterprise workflows + compliance", mainCategory: "ATS" },
-          { name: "SmartRecruiters", category: "ATS", lift: "High", strengthens: "enterprise marketplace integrations", mainCategory: "ATS" },
-          { name: "Jobvite", category: "ATS/CRM", lift: "High", strengthens: "high-volume recruiting operations", mainCategory: "ATS" }
+          { name: "Greenhouse", website: "https://www.greenhouse.io/", category: "ATS / Core System", lift: "High", description: "ATS and hiring workflow system-of-record; supports structured pipelines, scorecards, and integrations.", rating: "4.4", reviewUrl: "https://www.g2.com/sellers/greenhouse-software", mainCategory: "ATS" },
+          { name: "Ashby", website: "https://ashbyhq.com/", category: "ATS / Core System; Analytics", lift: "High", description: "ATS with strong analytics; combines workflow + reporting to improve funnel visibility and decision-making.", rating: "4.7", reviewUrl: "https://www.g2.com/sellers/ashby", mainCategory: "ATS" },
+          { name: "Lever", website: "https://www.lever.co/", category: "ATS / CRM", lift: "High", description: "ATS/CRM hybrid supporting sourcing-to-pipeline continuity and relationship management.", rating: null, reviewUrl: null, mainCategory: "ATS" },
+          { name: "Workable", website: "https://www.workable.com/", category: "ATS / Core System", lift: "Medium", description: "SMB/midmarket ATS focused on ease-of-use, job posting, and pipeline management.", rating: "4.5", reviewUrl: "https://www.g2.com/sellers/workable", mainCategory: "ATS" },
+          { name: "Teamtailor", website: "https://www.teamtailor.com/", category: "ATS / Employer Brand", lift: "Medium", description: "ATS with strong candidate experience and employer branding capabilities.", rating: "4.6", reviewUrl: "https://www.g2.com/sellers/teamtailor", mainCategory: "ATS" },
+          { name: "Breezy HR", website: "https://breezy.hr/", category: "ATS / Core System", lift: "Low–Medium", description: "Lightweight ATS for small teams; quick setup and simple workflow management.", rating: "4.4", reviewUrl: "https://www.g2.com/sellers/breezy-hr", mainCategory: "ATS" },
+          { name: "iCIMS", website: "https://www.icims.com/", category: "ATS / Enterprise", lift: "High", description: "Enterprise ATS focused on scale, compliance, and complex workflows.", rating: "4.2", reviewUrl: "https://www.g2.com/sellers/icims", mainCategory: "ATS" },
+          { name: "SmartRecruiters", website: "https://www.smartrecruiters.com/", category: "ATS / Enterprise", lift: "High", description: "Enterprise ATS with broad marketplace integrations and global hiring support.", rating: "4.3", reviewUrl: "https://www.g2.com/sellers/smartrecruiters", mainCategory: "ATS" },
+          { name: "Jobvite", website: "https://www.jobvite.com/", category: "ATS / CRM", lift: "High", description: "Talent acquisition suite supporting high-volume recruiting operations.", rating: null, reviewUrl: null, mainCategory: "ATS" }
         ]
       },
       {
         name: "Sourcing / Talent Discovery",
         providers: [
-          { name: "LinkedIn Recruiter", category: "Sourcing", lift: "Medium", strengthens: "targeting, relationship pipeline", mainCategory: "Sourcing/CRM" },
-          { name: "Indeed (sponsored/organic)", category: "Sourcing", lift: "Low", strengthens: "volume acquisition (often noisy)", mainCategory: "Sourcing/CRM" },
-          { name: "SeekOut", category: "Sourcing", lift: "Medium", strengthens: "targeted search + talent rediscovery", mainCategory: "Sourcing/CRM" },
-          { name: "hireEZ", category: "Sourcing", lift: "Medium", strengthens: "outbound sourcing + sequencing", mainCategory: "Sourcing/CRM" },
-          { name: "Gem", category: "Sourcing CRM", lift: "Medium", strengthens: "nurture + re-engagement of past candidates", mainCategory: "Sourcing/CRM" },
-          { name: "Loxo", category: "CRM/Sourcing", lift: "Medium", strengthens: "outbound workflows, agency-style sourcing", mainCategory: "Sourcing/CRM" },
-          { name: "Fetcher", category: "Sourcing service/tooling", lift: "Low–Medium", strengthens: "pipeline generation with assistance", mainCategory: "Sourcing/CRM" }
+          { name: "LinkedIn Recruiter", website: "https://business.linkedin.com/talent-solutions/recruiter", category: "Sourcing / Talent Discovery", lift: "Medium", description: "Search and outreach for professional profiles; strong for targeted outbound sourcing and pipeline building.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" },
+          { name: "Indeed", website: "https://www.indeed.com/", category: "Job Board / Sourcing Channel", lift: "Low", description: "Job advertising and candidate sourcing channel; often strong volume, variable quality depending on role/market.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" },
+          { name: "SeekOut", website: "https://www.seekout.com/", category: "Sourcing / Talent Discovery", lift: "Medium", description: "Talent search and rediscovery; supports targeted sourcing and re-engagement workflows.", rating: "4.5", reviewUrl: "https://www.g2.com/sellers/seekout", mainCategory: "Sourcing/CRM" },
+          { name: "hireEZ", website: "https://hireez.com/", category: "Sourcing / Outreach", lift: "Medium", description: "Outbound sourcing platform with search and engagement/sequencing capabilities.", rating: "4.6", reviewUrl: "https://www.g2.com/sellers/hireez", mainCategory: "Sourcing/CRM" },
+          { name: "Gem", website: "https://www.gem.com/", category: "CRM; Sourcing; Messaging/Nurture", lift: "Medium", description: "Recruiting CRM for nurturing and re-engagement; supports outreach and campaign management, often paired with ATS.", rating: "4.7", reviewUrl: "https://www.g2.com/sellers/gem", mainCategory: "Sourcing/CRM" },
+          { name: "Loxo", website: "https://loxo.co/", category: "CRM/Sourcing", lift: "Medium", description: "Recruiting CRM and sourcing platform; common in agency/executive search workflows.", rating: "4.6", reviewUrl: "https://www.g2.com/sellers/loxo", mainCategory: "Sourcing/CRM" },
+          { name: "Fetcher", website: "https://fetcher.ai/", category: "Sourcing (Tooling/Service)", lift: "Low–Medium", description: "Sourcing assistance and tooling to generate outbound pipelines with less manual effort.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" }
         ]
       },
       {
         name: "Parsing / Enrichment",
         description: "Turn resumes into usable signal.",
         providers: [
-          { name: "DaXtra", category: "Parsing/Search", lift: "Medium", strengthens: "structured resume data", mainCategory: "Sourcing/CRM" },
-          { name: "Textkernel", category: "Parsing/Matching", lift: "Medium–High", strengthens: "normalization + matching layers", mainCategory: "Sourcing/CRM" },
-          { name: "RChilli", category: "Parsing", lift: "Medium", strengthens: "ATS data cleanliness", mainCategory: "Sourcing/CRM" },
-          { name: "Sovren", category: "Parsing", lift: "Medium", strengthens: "resume ingestion", mainCategory: "Sourcing/CRM" }
+          { name: "DaXtra", website: "https://www.daxtra.com/", category: "Parsing / Search", lift: "Medium", description: "Resume/CV parsing and search tools to structure candidate data for downstream use.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" },
+          { name: "Textkernel", website: "https://www.textkernel.com/", category: "Parsing / Matching", lift: "Medium–High", description: "Parsing and matching/semantic search capabilities for normalizing candidate data and improving search.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" },
+          { name: "RChilli", website: "https://www.rchilli.com/", category: "Parsing", lift: "Medium", description: "Resume parsing and data standardization for ATS/CRM workflows.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" },
+          { name: "Sovren", website: "https://www.sovren.com/", category: "Parsing", lift: "Medium", description: "Resume parsing and data extraction for staffing and enterprise use cases.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" }
         ]
       }
     ]
@@ -53,25 +53,24 @@ const directoryData = [
       {
         name: "Scheduling / Coordination",
         providers: [
-          { name: "GoodTime", category: "Scheduling", lift: "Medium", strengthens: "coordinator load reduction", mainCategory: "Scheduling" },
-          { name: "Calendly", category: "Scheduling", lift: "Low", strengthens: "basic scheduling speed", mainCategory: "Scheduling" },
-          { name: "Prelude", category: "Scheduling", lift: "Medium", strengthens: "interview logistics automation", mainCategory: "Scheduling" }
+          { name: "GoodTime", website: "https://www.goodtime.io/", category: "Scheduling / Coordination", lift: "Medium", description: "Scheduling and interview coordination platform to reduce time-to-interview and coordinator load.", rating: "4.4", reviewUrl: "https://www.g2.com/sellers/goodtime-io", mainCategory: "Scheduling" },
+          { name: "Calendly", website: "https://calendly.com/", category: "Scheduling", lift: "Low", description: "Self-serve scheduling links to reduce back-and-forth; useful for screens and stakeholder scheduling.", rating: "3.1", reviewUrl: "https://www.trustpilot.com/review/calendly.com", mainCategory: "Scheduling" },
+          { name: "Prelude", website: "https://www.prelude.co/", category: "Scheduling / Coordination", lift: "Medium", description: "Interview scheduling and candidate coordination focused on automation and logistics.", rating: null, reviewUrl: null, mainCategory: "Scheduling" }
         ]
       },
       {
         name: "Automation / Workflow",
         description: "Routing, reminders, nudges.",
         providers: [
-          { name: "Zapier", category: "Automation", lift: "Low–Medium", strengthens: "quick integrations", mainCategory: "Automation/Workflow" },
-          { name: "Make (Integromat)", category: "Automation", lift: "Medium", strengthens: "advanced routing workflows", mainCategory: "Automation/Workflow" },
-          { name: "Paradox (Olivia)", category: "Conversational automation", lift: "Medium–High", strengthens: "high-volume candidate engagement", mainCategory: "Automation/Workflow" }
+          { name: "Zapier", website: "https://zapier.com/", category: "Automation / Workflow", lift: "Low–Medium", description: "No-code automation for connecting tools and routing tasks/notifications across systems.", rating: "4.5", reviewUrl: "https://www.g2.com/sellers/zapier", mainCategory: "Automation/Workflow" },
+          { name: "Make (Integromat)", website: "https://www.make.com/", category: "Automation / Workflow", lift: "Medium", description: "Advanced automation and integrations for complex workflows and routing logic.", rating: null, reviewUrl: null, mainCategory: "Automation/Workflow" },
+          { name: "Paradox (Olivia)", website: "https://paradox.ai/", category: "Conversational Automation", lift: "Medium–High", description: "Conversational assistant for high-volume engagement, screening, and scheduling automation.", rating: null, reviewUrl: null, mainCategory: "Automation/Workflow" }
         ]
       },
       {
         name: "Messaging / Candidate communication",
         providers: [
-          { name: "Gem", category: "Messaging/Nurture", lift: "Medium", strengthens: "response + reactivation", mainCategory: "Sourcing/CRM" },
-          { name: "TextUs", category: "SMS", lift: "Low", strengthens: "speed-to-contact for hourly/high-volume", mainCategory: "Sourcing/CRM" }
+          { name: "TextUs", website: "https://www.textus.com/", category: "Messaging / SMS", lift: "Low", description: "SMS messaging for faster candidate contact, common in hourly/high-volume hiring.", rating: null, reviewUrl: null, mainCategory: "Sourcing/CRM" }
         ]
       }
     ]
@@ -84,31 +83,30 @@ const directoryData = [
       {
         name: "Assessments / Skills tests",
         providers: [
-          { name: "HackerRank", category: "Assessments", lift: "Medium", strengthens: "technical screening", mainCategory: "Assessments" },
-          { name: "Codility", category: "Assessments", lift: "Medium", strengthens: "engineering skills signal", mainCategory: "Assessments" },
-          { name: "CodeSignal", category: "Assessments", lift: "Medium", strengthens: "standardized technical evaluation", mainCategory: "Assessments" },
-          { name: "TestGorilla", category: "Assessments", lift: "Low–Medium", strengthens: "general screening at scale", mainCategory: "Assessments" },
-          { name: "Criteria", category: "Assessments", lift: "Medium", strengthens: "aptitude/personality tests", mainCategory: "Assessments" },
-          { name: "SHL", category: "Assessments", lift: "High", strengthens: "enterprise psychometrics", mainCategory: "Assessments" },
-          { name: "Harver", category: "High-volume screening", lift: "High", strengthens: "volume funnel optimization", mainCategory: "Assessments" }
+          { name: "HackerRank", category: "Assessments / Skills", lift: "Medium", description: "Technical coding assessments for engineering hiring; supports standardized skill evaluation.", rating: null, reviewUrl: null, mainCategory: "Assessments" },
+          { name: "Codility", category: "Assessments / Skills", lift: "Medium", description: "Coding assessments and skill evaluation for engineering roles.", rating: null, reviewUrl: null, mainCategory: "Assessments" },
+          { name: "CodeSignal", category: "Assessments / Skills", lift: "Medium", description: "Skills assessment platform with standardized tests and scoring for technical hiring.", rating: null, reviewUrl: null, mainCategory: "Assessments" },
+          { name: "TestGorilla", category: "Assessments / Screening", lift: "Low–Medium", description: "General assessments for pre-screening; broad library across roles.", rating: null, reviewUrl: null, mainCategory: "Assessments" },
+          { name: "Criteria", category: "Assessments / Aptitude", lift: "Medium", description: "Aptitude and personality assessments for early-stage qualification.", rating: null, reviewUrl: null, mainCategory: "Assessments" },
+          { name: "SHL", category: "Assessments / Enterprise", lift: "High", description: "Enterprise psychometric and skills assessments, often for large-scale hiring.", rating: null, reviewUrl: null, mainCategory: "Assessments" },
+          { name: "Harver", category: "High-volume Screening", lift: "High", description: "High-volume selection and screening workflows aimed at improving throughput and quality.", rating: null, reviewUrl: null, mainCategory: "Assessments" }
         ]
       },
       {
         name: "Background / Identity / References",
         providers: [
-          { name: "Checkr", category: "Background", lift: "Medium", strengthens: "scalable background checks", mainCategory: "Background/ID" },
-          { name: "Sterling", category: "Background", lift: "High", strengthens: "enterprise checks/compliance", mainCategory: "Background/ID" },
-          { name: "HireRight", category: "Background", lift: "High", strengthens: "enterprise screening", mainCategory: "Background/ID" },
-          { name: "Certn", category: "Background", lift: "Medium", strengthens: "faster checks in some markets", mainCategory: "Background/ID" },
-          { name: "SkillSurvey", category: "References", lift: "Medium", strengthens: "structured reference signal", mainCategory: "Background/ID" }
+          { name: "Checkr", category: "Background Checks", lift: "Medium", description: "Background screening platform commonly used for scalable checks.", rating: null, reviewUrl: null, mainCategory: "Background/ID" },
+          { name: "Sterling", category: "Background Checks / Enterprise", lift: "High", description: "Enterprise background and screening services with compliance-focused workflows.", rating: null, reviewUrl: null, mainCategory: "Background/ID" },
+          { name: "HireRight", category: "Background Checks / Enterprise", lift: "High", description: "Background screening services often used at enterprise scale.", rating: null, reviewUrl: null, mainCategory: "Background/ID" },
+          { name: "Certn", category: "Background Checks", lift: "Medium", description: "Background checks with an emphasis on speed and international coverage (varies by region).", rating: null, reviewUrl: null, mainCategory: "Background/ID" },
+          { name: "SkillSurvey", category: "References", lift: "Medium", description: "Structured reference checking to capture consistent feedback signal earlier.", rating: null, reviewUrl: null, mainCategory: "Background/ID" }
         ]
       },
       {
         name: "Structured Screening",
         description: "Knockout + signal capture.",
         providers: [
-          { name: "Typeform", category: "Screening forms", lift: "Low", strengthens: "pre-screen signal collection", mainCategory: "Automation/Workflow" },
-          { name: "Qualified-style intake", category: "Varies", lift: "Low–Medium", strengthens: "routing + initial fit", mainCategory: "Automation/Workflow" }
+          { name: "Typeform", category: "Screening Forms", lift: "Low", description: "Flexible form builder for pre-screen questions and knockouts; can route candidates based on responses.", rating: null, reviewUrl: null, mainCategory: "Automation/Workflow" }
         ]
       }
     ]
@@ -122,25 +120,24 @@ const directoryData = [
         name: "Interview Intelligence",
         description: "Notes, transcripts, signal extraction.",
         providers: [
-          { name: "Metaview", category: "Interview intelligence", lift: "Medium", strengthens: "structured notes + recall", mainCategory: "Interview Intelligence" },
-          { name: "BrightHire", category: "Interview intelligence", lift: "Medium", strengthens: "coaching + consistency", mainCategory: "Interview Intelligence" },
-          { name: "Fireflies.ai", category: "Meeting capture", lift: "Low", strengthens: "transcripts + searchable recall", mainCategory: "Interview Intelligence" },
-          { name: "Otter.ai", category: "Transcription", lift: "Low", strengthens: "capture, not full scoring", mainCategory: "Interview Intelligence" }
+          { name: "Metaview", category: "Interview Intelligence; AI Sourcing", lift: "Medium", description: "AI recruiting platform including interview intelligence/notetaker plus AI sourcing agent to find candidates; can support outreach workflows.", rating: "4.8", reviewUrl: "https://www.g2.com/sellers/metaview", mainCategory: "Interview Intelligence" },
+          { name: "BrightHire", category: "Interview Intelligence", lift: "Medium", description: "Interview intelligence for capturing notes and coaching consistency across interviewers.", rating: "4.7", reviewUrl: "https://www.g2.com/sellers/brighthire", mainCategory: "Interview Intelligence" },
+          { name: "Fireflies.ai", category: "Meeting Capture / Transcription", lift: "Low", description: "Meeting transcription and summaries; can support recruiting calls but is general-purpose.", rating: null, reviewUrl: null, mainCategory: "Interview Intelligence" },
+          { name: "Otter.ai", category: "Transcription", lift: "Low", description: "Transcription and meeting notes; general-purpose capture tool.", rating: null, reviewUrl: null, mainCategory: "Interview Intelligence" }
         ]
       },
       {
         name: "Structured interviewing / scorecards",
         providers: [
-          { name: "BarRaiser", category: "Interview quality", lift: "Medium–High", strengthens: "structured panels + interviewer calibration", mainCategory: "Interview Intelligence" },
-          { name: "(ATS-native scorecards)", category: "Scorecards", lift: "Low", strengthens: "consistency if actually used", mainCategory: "Interview Intelligence" }
+          { name: "BarRaiser", category: "Interview Quality / Structured Interviewing", lift: "Medium–High", description: "Structured interview processes and interviewer calibration support to improve consistency.", rating: null, reviewUrl: null, mainCategory: "Interview Intelligence" }
         ]
       },
       {
         name: "Video Interviewing",
         providers: [
-          { name: "HireVue", category: "Video + assessments", lift: "High", strengthens: "scale interviewing", mainCategory: "Video Interviewing" },
-          { name: "Modern Hire", category: "Video/assessments", lift: "High", strengthens: "enterprise selection workflows", mainCategory: "Video Interviewing" },
-          { name: "Spark Hire", category: "Video interviewing", lift: "Medium", strengthens: "async screening", mainCategory: "Video Interviewing" }
+          { name: "HireVue", category: "Video Interviewing; Assessments", lift: "High", description: "Video interviewing and assessment workflows for scaled hiring; enterprise-oriented.", rating: null, reviewUrl: null, mainCategory: "Video Interviewing" },
+          { name: "Modern Hire", category: "Video Interviewing; Assessments", lift: "High", description: "Enterprise hiring platform combining assessments and video interviewing for selection workflows.", rating: null, reviewUrl: null, mainCategory: "Video Interviewing" },
+          { name: "Spark Hire", category: "Video Interviewing", lift: "Medium", description: "Video interviewing platform, including async options for early screening.", rating: null, reviewUrl: null, mainCategory: "Video Interviewing" }
         ]
       }
     ]
@@ -153,18 +150,17 @@ const directoryData = [
       {
         name: "Offer management / Approvals",
         providers: [
-          { name: "DocuSign", category: "e-sign", lift: "Low", strengthens: "signature + audit trail", mainCategory: "Offer/Onboarding" },
-          { name: "Adobe Sign", category: "e-sign", lift: "Low", strengthens: "signature workflows", mainCategory: "Offer/Onboarding" },
-          { name: "(ATS-native offer workflows)", category: "Offer workflows", lift: "Low–Medium", strengthens: "approvals if configured", mainCategory: "Offer/Onboarding" }
+          { name: "DocuSign", category: "Offer / e-Sign", lift: "Low", description: "E-signature workflows for offer letters and approvals with audit trails.", rating: "4.4", reviewUrl: "https://www.g2.com/sellers/docusign", mainCategory: "Offer/Onboarding" },
+          { name: "Adobe Sign", category: "Offer / e-Sign", lift: "Low", description: "E-signature workflows for offers and related documents.", rating: null, reviewUrl: null, mainCategory: "Offer/Onboarding" }
         ]
       },
       {
         name: "Onboarding / HRIS handoff",
         providers: [
-          { name: "Rippling", category: "HRIS", lift: "Medium–High", strengthens: "hire → onboard operational continuity", mainCategory: "Offer/Onboarding" },
-          { name: "Gusto", category: "HRIS", lift: "Medium", strengthens: "SMB onboarding/payroll simplicity", mainCategory: "Offer/Onboarding" },
-          { name: "BambooHR", category: "HRIS", lift: "Medium", strengthens: "HR workflows for SMB/midmarket", mainCategory: "Offer/Onboarding" },
-          { name: "Workday", category: "HRIS", lift: "Very High", strengthens: "enterprise workforce systems", mainCategory: "Offer/Onboarding" }
+          { name: "Rippling", category: "HRIS / Onboarding", lift: "Medium–High", description: "HRIS platform supporting onboarding and employee lifecycle; often used for hire-to-day-one continuity.", rating: "4.8", reviewUrl: "https://www.g2.com/sellers/rippling", mainCategory: "Offer/Onboarding" },
+          { name: "Gusto", category: "HRIS / Payroll", lift: "Medium", description: "SMB payroll + HR platform; supports onboarding workflows for smaller teams.", rating: "4.6", reviewUrl: "https://www.g2.com/sellers/gusto", mainCategory: "Offer/Onboarding" },
+          { name: "BambooHR", category: "HRIS", lift: "Medium", description: "HRIS for SMB/midmarket; onboarding and employee management workflows.", rating: "4.4", reviewUrl: "https://www.g2.com/sellers/bamboohr", mainCategory: "Offer/Onboarding" },
+          { name: "Workday", category: "HRIS / Enterprise", lift: "Very High", description: "Enterprise HRIS used for large organizations; complex implementation but powerful system-of-record.", rating: null, reviewUrl: null, mainCategory: "Offer/Onboarding" }
         ]
       }
     ]
@@ -177,10 +173,10 @@ const directoryData = [
       {
         name: "Analytics",
         providers: [
-          { name: "Juicebox", category: "Recruiting analytics", lift: "Medium", strengthens: "funnel visibility, time-to-stage, pass-through", mainCategory: "Analytics" },
-          { name: "Ashby Analytics", category: "Analytics", lift: "Medium", strengthens: "layer-by-layer conversion insight", mainCategory: "Analytics" },
-          { name: "Greenhouse Reporting", category: "Analytics", lift: "Low–Medium", strengthens: "baseline metrics (varies by setup", mainCategory: "Analytics" },
-          { name: "Tableau / Power BI / Looker", category: "BI", lift: "High", strengthens: "custom visibility if data discipline exists", mainCategory: "Analytics" }
+          { name: "Juicebox", category: "Analytics / Funnel Visibility", lift: "Medium", description: "Recruiting analytics focused on funnel visibility (conversion, time-in-stage, source quality) across the hiring process.", rating: null, reviewUrl: null, mainCategory: "Analytics" },
+          { name: "Tableau", category: "Business Intelligence", lift: "High", description: "BI platform for custom analytics and dashboards; requires disciplined data pipelines.", rating: null, reviewUrl: null, mainCategory: "Analytics" },
+          { name: "Power BI", category: "Business Intelligence", lift: "High", description: "BI platform for reporting and dashboards; often used with ATS exports and warehouse data.", rating: null, reviewUrl: null, mainCategory: "Analytics" },
+          { name: "Looker", category: "Business Intelligence", lift: "High", description: "BI and modeling layer for analytics; useful when data is centralized in a warehouse.", rating: null, reviewUrl: null, mainCategory: "Analytics" }
         ]
       }
     ]
@@ -219,6 +215,9 @@ const Services = () => {
         <div className="services-header">
           <h2 className="services-title">Provider Directory</h2>
           <p className="services-subtitle">A curated list of high-signal tools across the hiring stack.</p>
+          <p style={{ fontSize: '0.95rem', color: '#94A3B8', fontStyle: 'italic', marginTop: '20px', maxWidth: '800px', margin: '20px auto 0' }}>
+            Providers are included for informational purposes and do not imply recommendation; I can conduct targeted research on your behalf and will label entries “Spoken With” as diligence progresses. ~~Paul
+          </p>
         </div>
 
         {/* View Toggle */}
@@ -260,12 +259,31 @@ const Services = () => {
                         {group.providers.map((provider, pIndex) => (
                           <div key={pIndex} style={{ borderLeft: '3px solid #3B82F6', paddingLeft: '15px' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                              <span style={{ color: '#fff', fontWeight: '600', fontSize: '1rem' }}>{provider.name}</span>
+                              <span style={{ color: '#fff', fontWeight: '600', fontSize: '1rem' }}>
+                                {provider.website ? (
+                                  <a href={provider.website} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dotted rgba(255,255,255,0.5)' }}>
+                                    {provider.name}
+                                  </a>
+                                ) : provider.name}
+                              </span>
                               <span style={{ fontSize: '0.75rem', color: '#64748B', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px' }}>Lift: {provider.lift}</span>
                             </div>
                             <div style={{ fontSize: '0.85rem', color: '#94A3B8', marginTop: '4px' }}>
-                              <span style={{ color: '#3B82F6' }}>{provider.category}</span> • {provider.strengthens}
+                              <span style={{ color: '#3B82F6' }}>{provider.category}</span>
                             </div>
+                            <p style={{ fontSize: '0.85rem', color: '#CBD5E1', marginTop: '6px', lineHeight: '1.4' }}>
+                              {provider.description}
+                            </p>
+                            {provider.rating && (
+                               <div style={{ marginTop: '6px', fontSize: '0.8rem' }}>
+                                 <span style={{ color: '#FBBF24' }}>★ {provider.rating}</span>
+                                 {provider.reviewUrl && (
+                                   <span style={{ marginLeft: '8px' }}>
+                                     <a href={provider.reviewUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#3B82F6', textDecoration: 'none' }}>Read Reviews →</a>
+                                   </span>
+                                 )}
+                               </div>
+                            )}
                           </div>
                         ))}
                       </div>
@@ -286,12 +304,28 @@ const Services = () => {
                   {providers.map((provider, index) => (
                     <div key={index} style={{ paddingBottom: '15px', borderBottom: index !== providers.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '5px' }}>
-                        <span style={{ color: '#fff', fontWeight: '600', fontSize: '1.1rem' }}>{provider.name}</span>
+                        <span style={{ color: '#fff', fontWeight: '600', fontSize: '1.1rem' }}>
+                          {provider.website ? (
+                            <a href={provider.website} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px dotted rgba(255,255,255,0.5)' }}>
+                              {provider.name}
+                            </a>
+                          ) : provider.name}
+                        </span>
                         <span style={{ fontSize: '0.75rem', color: '#64748B', border: '1px solid #334155', padding: '2px 6px', borderRadius: '4px' }}>Lift: {provider.lift}</span>
                       </div>
-                      <p style={{ fontSize: '0.9rem', color: '#94A3B8', margin: 0 }}>
-                        {provider.strengthens}
+                      <p style={{ fontSize: '0.9rem', color: '#CBD5E1', margin: 0, lineHeight: '1.4' }}>
+                        {provider.description}
                       </p>
+                      {provider.rating && (
+                         <div style={{ marginTop: '8px', fontSize: '0.8rem' }}>
+                           <span style={{ color: '#FBBF24' }}>★ {provider.rating}</span>
+                           {provider.reviewUrl && (
+                             <span style={{ marginLeft: '8px' }}>
+                               <a href={provider.reviewUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#3B82F6', textDecoration: 'none' }}>Read Reviews →</a>
+                             </span>
+                           )}
+                         </div>
+                      )}
                     </div>
                   ))}
                 </div>

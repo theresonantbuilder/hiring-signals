@@ -232,7 +232,7 @@ const SignalAudit = () => {
         {/* INTRO: SETTING THE STAGE */}
         <div className="case-studies-header" style={{ textAlign: 'left', marginBottom: '80px' }}>
           <span className="case-study-tag">System Diagnostic</span>
-          <h2 className="case-studies-title">The Signal Audit</h2>
+          <h2 className="case-studies-title">Hiring Signal Check</h2>
           <p className="case-studies-subtitle" style={{ maxWidth: '800px', margin: '20px 0' }}>
             The difference between a "Hiring Process" and a <strong>Signal Architecture</strong> is the 
             infrastructure. Most teams are leaking talent through low-fidelity tools and manual bottlenecks.

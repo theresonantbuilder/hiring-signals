@@ -104,7 +104,7 @@ export default function App() {
             <Link to="/advisors">About Paul</Link>
             <Link to="/contact">Contact</Link>
           </div>
-          <Link to="/audit" className="nav-cta" style={{ textDecoration: 'none' }}>Request a Signal Audit</Link>
+          <Link to="/audit" className="nav-cta" style={{ textDecoration: 'none' }}>Hiring Signal Check</Link>
         </nav>
 
         {/* Route Content */}
@@ -122,7 +122,7 @@ export default function App() {
         <div className="footer-cta">
             <h4 className="footer-title">Ready to isolate the signal?</h4>
             <Link to="/audit" className="footer-button" style={{ textDecoration: 'none', display: 'inline-block' }}>
-              Request a Signal Audit
+              Hiring Signal Check
             </Link>
         </div>
       </div>
