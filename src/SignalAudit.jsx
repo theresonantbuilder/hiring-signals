@@ -2,12 +2,12 @@ import React, { useState, useRef } from 'react';
 
 const layers = [
     {
-      id: "01",
-      title: "The Sourcing Layer",
+      id: "00",
+      title: "Infrastructure Check",
       type: "detailed",
       sections: [
         {
-          title: "1. Infrastructure Check: How do you build your pipeline?",
+          title: "How do you build your pipeline?",
           questions: [
             {
               title: "A. Defining the Role",
@@ -67,81 +67,33 @@ const layers = [
             }
           ],
           qa: "Q & A: What do you think is missing in your current tech stack to identify quality talent?"
-        },
-        {
-          title: "2. Strategy Check",
-          questions: [
-            {
-              text: "Who Writes the JD?",
-              options: [
-                { label: "HR / Administrative: Focused on compliance and generic requirements." },
-                { label: "The Hiring Manager: Focused on a subjective \"wishlist.\"" },
-                { label: "AI-Architected: Built using intake intelligence to map actual role logic." }
-              ]
-            },
-            {
-              text: "How are applications generated?",
-              options: [
-                { label: "We manually create an application and post on our site or social" },
-                { label: "Application is generated from our ATS" }
-              ]
-            },
-            {
-              text: "How do you find 'Passive' Talent?",
-              options: [
-                { label: "Reactive: We wait for them to apply or appear on a basic LinkedIn search." },
-                { label: "Predictive: We use Agentic Search to live-monitor \"Ghost Signals\" (funding, layoffs, patents)." }
-              ]
-            },
-            {
-              text: "What is your Recruiter Filter?",
-              options: [
-                { label: "Manual: Recruiters spend hours sifting through resumes to find a \"fit.\"" },
-                { label: "Inference: AI surfaces the top 5% of candidates based on behavioral history, not just keywords." }
-              ]
-            }
-          ],
-          qa: "Q & A: What do you think is missing in your current strategy to identify quality talent?"
         }
       ]
     },
     {
-      id: "02",
-      title: "The Notification Layer",
-      probe: "Is your routing logic manual or agentic?",
-      techStack: ["Greenhouse", "Lever", "Workday", "Slack Integration", "MS Teams", "Email Alerts"],
-      diagnostic: "When a top-tier lead triggers a signal, walk us through the tech route. How long until the manager sees it?"
-    },
-    {
-      id: "03",
-      title: "The Verification Layer",
-      probe: "Are you fact-checking resumes or verifying behavioral proof?",
-      techStack: ["HackerRank", "CoderPad", "Checkr", "GitHub API", "HiPeople", "Manual References"],
-      diagnostic: "What percentage of your interview loop is spent proving claims that should have been pre-validated?"
-    },
-    {
-      id: "04",
-      title: "The Evaluation Layer",
-      probe: "Is your data capture subjective 'vibes' or structured logic?",
-      techStack: ["Metaview", "BrightHire", "Gong", "ATS Scorecards", "Excel/Sheets", "Notion"],
-      diagnostic: "After the handshake, how is the signal captured? Is there an AI layer structuring the feedback?"
-    },
-    {
-      id: "05",
-      title: "The Selection Layer",
-      probe: "Is your final mile a 'Black Hole' or a high-velocity circuit?",
-      techStack: ["DocuSign", "PandaDoc", "BambooHR", "Gusto", "Manual Word Docs", "Offer Letter Automation"],
-      diagnostic: "Describe the friction between 'Yes' and Day 1. Does the candidate hit a wall of manual paperwork?"
+      id: "01",
+      title: "Universal Signal Check",
+      probe: "Q & A: Where does your hiring process most often break down — and what signal should be captured earlier (from resumes, notes, messages) so your team can qualify and decide faster?"
     }
   ];
 
+const separatorStyle = {
+  width: '80px',
+  height: '4px',
+  background: '#3B82F6',
+  borderRadius: '4px',
+  boxShadow: '0 0 15px rgba(59, 130, 246, 0.8)',
+  margin: '40px auto'
+};
+
 const SignalAudit = () => {
-  const [activeLayer, setActiveLayer] = useState(0);
   const [selections, setSelections] = useState({});
   const [otherValues, setOtherValues] = useState({});
   const [comments, setComments] = useState({});
   const [recordings, setRecordings] = useState({});
   const [recordingActive, setRecordingActive] = useState(null); // Stores key of currently recording section
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '' });
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
 
@@ -200,9 +152,20 @@ const SignalAudit = () => {
     }
   };
 
-  const handleGenerateReport = () => {
+  const handleUserInfoChange = (e) => {
+    const { name, value } = e.target;
+    setUserInfo(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleFinalSubmit = () => {
+    if (!userInfo.email) {
+      alert("Email address is required to submit.");
+      return;
+    }
+
     const reportData = {
       timestamp: new Date().toLocaleString(),
+      userInfo,
       selections,
       otherValues,
       comments,
@@ -222,62 +185,114 @@ const SignalAudit = () => {
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
 
+    setShowSubmitModal(false);
     alert("Report downloaded to your computer!\n\nNOTE: Currently, this data lives only in your browser. To forward this to your email automatically, we would need to integrate a service like EmailJS.");
+  };
+
+  const checkCompletion = () => {
+    for (const layer of layers) {
+      if (layer.type === 'detailed') {
+        for (let sIndex = 0; sIndex < layer.sections.length; sIndex++) {
+          const section = layer.sections[sIndex];
+          // Check questions
+          for (let qIndex = 0; qIndex < section.questions.length; qIndex++) {
+            const question = section.questions[qIndex];
+            let questionAnswered = false;
+            for (let oIndex = 0; oIndex < question.options.length; oIndex++) {
+               const optId = `L${layer.id}-S${sIndex}-Q${qIndex}-O${oIndex}`;
+               if (selections[optId]) {
+                 questionAnswered = true;
+                 break;
+               }
+            }
+            if (!questionAnswered) return false;
+          }
+          // Check Q&A (comment or recording)
+          const sectionKey = `L${layer.id}-S${sIndex}`;
+          if (!comments[sectionKey] && !recordings[sectionKey]) return false;
+        }
+      } else {
+        // Standard layer
+        // We only track recordings for standard layers in the current code
+        const sectionKey = `L${layer.id}-Main`;
+        if (!comments[sectionKey] && !recordings[sectionKey]) return false;
+      }
+    }
+    return true;
+  };
+
+  const handleSubmit = () => {
+    if (checkCompletion()) {
+      setShowSubmitModal(true);
+    } else {
+      if (window.confirm("Are you sure you want to submit before all fields are completed?")) {
+        setShowSubmitModal(true);
+      }
+    }
   };
 
   return (
     <section className="case-studies-section">
-      <div className="container">
+      <div className="container" style={{ maxWidth: '100%', paddingRight: '300px' }}>
         
         {/* INTRO: SETTING THE STAGE */}
         <div className="case-studies-header" style={{ textAlign: 'left', marginBottom: '80px' }}>
           <span className="case-study-tag">System Diagnostic</span>
           <h2 className="case-studies-title">Hiring Signal Check</h2>
-          <p className="case-studies-subtitle" style={{ maxWidth: '800px', margin: '20px 0' }}>
-            The difference between a "Hiring Process" and a <strong>Signal Architecture</strong> is the 
-            infrastructure. Most teams are leaking talent through low-fidelity tools and manual bottlenecks.
-            <br /><br />
-            This audit identifies the "Noise" in your stack. Check your infrastructure, record your situational 
-            briefing, and receive your <strong>System Fidelity Score.</strong>
-          </p>
+          <div className="case-studies-subtitle" style={{ maxWidth: '100%', margin: '20px 0', fontSize: '1.1rem', lineHeight: '1.6', color: '#94A3B8' }}>
+            <p style={{ marginBottom: '1.5rem' }}>
+              Most hiring stacks capture activity — but they don’t surface what’s slowing you down.
+            </p>
+            <p style={{ marginBottom: '1.5rem' }}>
+              The Hiring Signal Check is a fast diagnostic to identify where candidates go cold across your funnel (sourcing, response, qualification, interviewing, and offer/onboarding) — and what to change first to reduce drop-off and speed decisions.
+            </p>
+            
+            <h4 style={{ color: 'white', fontSize: '1.2rem', marginBottom: '1rem', marginTop: '2rem' }}>Two ways to complete it:</h4>
+            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
+              <li style={{ marginBottom: '0.8rem' }}><strong style={{ color: '#3B82F6' }}>Talk it through (recommended):</strong> book a short Zoom and I’ll guide the questions while I capture the signal in real time.</li>
+              <li><strong style={{ color: '#3B82F6' }}>Fill it out here:</strong> answer each section at your own pace (type or record your voice).</li>
+            </ul>
+
+            <h4 style={{ color: 'white', fontSize: '1.2rem', marginBottom: '1rem' }}>What you’ll get:</h4>
+            <ul style={{ paddingLeft: '20px', color: '#CBD5E1' }}>
+              <li>A clear friction map of your top 1–2 leaks</li>
+              <li>A priority action plan (what to fix first, and why)</li>
+              <li>A provider shortlist tagged AI-Native vs Inference-Ready when relevant</li>
+              <li>A recommended next step: quick config changes, a pilot plan, or hands-on implementation support</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Double Separator */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '80px' }}>
+          <div style={{ ...separatorStyle, margin: 0 }}></div>
+          <div style={{ ...separatorStyle, margin: 0 }}></div>
         </div>
 
         {/* AUDIT INTERFACE */}
-        <div className="audit-grid">
-          
-          {/* SIDEBAR NAVIGATION */}
-          <div className="audit-sidebar">
-            {layers.map((layer, index) => (
-              <div 
-                key={layer.id}
-                onClick={() => setActiveLayer(index)}
-                className={`audit-nav-item ${activeLayer === index ? 'active' : ''}`}
-              >
-                <span className="audit-nav-label">LAYER {layer.id}</span>
-                <h4 className="audit-nav-title">{layer.title}</h4>
-              </div>
-            ))}
-          </div>
+        <div>
+          {layers.map((layer, index) => (
+            <React.Fragment key={layer.id}>
+            <div className="case-study-card" style={{ marginBottom: index < layers.length - 1 ? '0px' : '60px' }}>
 
-          {/* ACTIVE DIAGNOSTIC PANEL */}
-          <div className="case-study-card" style={{ margin: 0 }}>
-            {layers[activeLayer].type === 'detailed' ? (
+            {layer.type === 'detailed' ? (
               // Detailed Survey View (Layer 01)
               <div className="audit-detailed-view">
-                {layers[activeLayer].sections.map((section, sIndex) => {
-                  const sectionKey = `L${layers[activeLayer].id}-S${sIndex}`;
+                {layer.sections.map((section, sIndex) => {
+                  const sectionKey = `L${layer.id}-S${sIndex}`;
                   return (
                   <div key={sIndex} className="audit-section">
                     <h3 className="audit-section-title">{section.title}</h3>
                     
                     {section.questions.map((q, qIndex) => {
                       return (
-                      <div key={qIndex} className="audit-question-block">
+                      <React.Fragment key={qIndex}>
+                      <div className="audit-question-block">
                         {q.title && <p className="audit-question-title">{q.title}</p>}
                         <p className="audit-question-text">{q.text}</p>
                         <div className="audit-options">
                           {q.options.map((opt, oIndex) => {
-                            const optId = `L${layers[activeLayer].id}-S${sIndex}-Q${qIndex}-O${oIndex}`;
+                            const optId = `L${layer.id}-S${sIndex}-Q${qIndex}-O${oIndex}`;
                             const isOtherOption = opt.label === "Other" || opt.label.includes("Other");
                             
                             return (
@@ -333,8 +348,14 @@ const SignalAudit = () => {
                           })}
                         </div>
                       </div>
+                      {qIndex < section.questions.length - 1 && (
+                        <div style={separatorStyle}></div>
+                      )}
+                      </React.Fragment>
                     );
                     })}
+
+                    <div style={separatorStyle}></div>
 
                     {/* Q&A Section with Comment Field */}
                     <div className="recording-section">
@@ -364,25 +385,20 @@ const SignalAudit = () => {
             ) : (
               // Standard View (Layers 02-05)
               <>
-                <h3 className="case-study-headline" style={{ fontSize: '1.5rem' }}>{layers[activeLayer].probe}</h3>
+                <h5 className="impact-card-title" style={{ marginBottom: '10px' }}>{layer.probe}</h5>
                 
-                <div style={{ marginTop: '30px' }}>
-                  <p className="lab-label" style={{ fontSize: '10px' }}>Infrastructure Checkpoint</p>
-                  <div className="tech-stack-grid">
-                    {layers[activeLayer].techStack.map(tech => (
-                      <button key={tech} className="tech-btn">{tech}</button>
-                    ))}
-                    <button className="tech-btn active">+ Other</button>
-                  </div>
-                </div>
 
                 <div className="recording-section">
                   {(() => {
-                    const sectionKey = `L${layers[activeLayer].id}-Main`;
+                    const sectionKey = `L${layer.id}-Main`;
                     return (
                     <>
-                  <h5 className="impact-card-title" style={{ marginBottom: '10px' }}>Situational Briefing</h5>
-                  <p className="impact-text" style={{ fontSize: '13px', marginBottom: '20px' }}>{layers[activeLayer].diagnostic}</p>
+                  <textarea 
+                        className="audit-textarea" 
+                        placeholder="Type your comments here..."
+                        value={comments[sectionKey] || ''}
+                        onChange={(e) => handleCommentChange(sectionKey, e.target.value)}
+                  ></textarea>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <button 
                       className="rec-btn" 
@@ -394,26 +410,107 @@ const SignalAudit = () => {
                     {recordings[sectionKey] && <span style={{ color: 'var(--accent-green)', fontSize: '12px' }}>✓ Audio Saved</span>}
                     {recordingActive === sectionKey && <span className="rec-timer" style={{ animation: 'pulse 1s infinite' }}>● Recording...</span>}
                   </div>
+
+                  <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '40px auto' }}>
+                    <div style={{ ...separatorStyle, margin: 0 }}></div>
+                    <div style={{ ...separatorStyle, margin: 0 }}></div>
+                  </div>
+
+                  <h5 className="impact-card-title" style={{ marginBottom: '10px' }}>Reach out to Paul Duplantis if you would like a deep conversation on your hiring tech stack to help identify potential solutions for your needs.</h5>
                     </>
                     );
                   })()}
                 </div>
               </>
             )}
-
-            {/* NAVIGATION BUTTONS */}
-            <div style={{ marginTop: '40px', display: 'flex', justifyContent: 'flex-end' }}>
-               <button 
-                onClick={() => activeLayer === 4 ? handleGenerateReport() : setActiveLayer(prev => Math.min(prev + 1, 4))}
-                className="inquire-btn"
-                style={{ padding: '12px 30px' }}
-               >
-                 {activeLayer === 4 ? "GENERATE AUDIT REPORT" : "NEXT LAYER"}
-               </button>
             </div>
-          </div>
+            {index < layers.length - 1 && (
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '40px auto' }}>
+                <div style={{ ...separatorStyle, margin: 0 }}></div>
+                <div style={{ ...separatorStyle, margin: 0 }}></div>
+              </div>
+            )}
+            </React.Fragment>
+          ))}
+
+          {/* Floating Submit Button */}
+          <button
+            onClick={handleSubmit}
+            style={{
+              position: 'fixed',
+              top: '50%',
+              right: '40px',
+              transform: 'translateY(-50%)',
+              backgroundColor: '#3B82F6',
+              color: 'white',
+              border: 'none',
+              borderRadius: '50px',
+              padding: '15px 30px',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
+              cursor: 'pointer',
+              zIndex: 1000,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}
+          >
+            Submit Signal Check
+          </button>
 
         </div>
+
+        {/* Submit Modal */}
+        {showSubmitModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <h3 className="modal-title">Final Step</h3>
+              <p className="modal-description">
+                Please provide your details to finalize the audit. We'll send a copy of the report to your email.
+              </p>
+              
+              <input 
+                type="text" 
+                name="name"
+                placeholder="Full Name" 
+                className="modal-input"
+                value={userInfo.name}
+                onChange={handleUserInfoChange}
+              />
+              
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Email Address (Required)" 
+                className="modal-input"
+                value={userInfo.email}
+                onChange={handleUserInfoChange}
+                required
+              />
+              
+              <input 
+                type="tel" 
+                name="phone"
+                placeholder="Phone Number" 
+                className="modal-input"
+                value={userInfo.phone}
+                onChange={handleUserInfoChange}
+              />
+              
+              <div className="modal-actions">
+                <button className="btn-secondary" onClick={() => setShowSubmitModal(false)}>
+                  Cancel
+                </button>
+                <button className="btn-primary" onClick={handleFinalSubmit}>
+                  Submit Audit
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

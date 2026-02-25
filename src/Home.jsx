@@ -102,23 +102,52 @@ const Home = () => {
         <h1 className="hero-title">
           HIRING <span className="italic-bold">SIGNALS</span><span className="text-blue">.ai</span>
         </h1>
-        <p className="hero-subtitle">
-          Fractional Recruiter & Hiring Systems Advisor
-        </p>
-        <div className="hero-content">
-          <div className="hero-badge">
-            <h2 className="badge-text">
-              "Hiring isn't a volume problem. It's a signal problem."
-            </h2>
-          </div>
-          <p className="hero-description">
-            Embedded recruiting support for growing teams — identifying hiring friction and introducing practical, modern tools where they create real lift. 
+        <div style={{
+          maxWidth: '800px',
+          margin: '4rem auto 0 auto',
+          padding: '3rem',
+          background: 'rgba(255, 255, 255, 0.02)',
+          border: '1px solid rgba(59, 130, 246, 0.3)',
+          borderRadius: '24px',
+          backdropFilter: 'blur(12px)',
+          textAlign: 'center',
+          position: 'relative',
+          boxShadow: '0 20px 50px -20px rgba(59, 130, 246, 0.15)'
+        }}>
+          <div style={{
+            position: 'absolute',
+            top: '-2px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80px',
+            height: '4px',
+            background: '#3B82F6',
+            borderRadius: '4px',
+            boxShadow: '0 0 15px rgba(59, 130, 246, 0.8)'
+          }}></div>
+          <p style={{
+            fontSize: '1.4rem',
+            lineHeight: '1.5',
+            color: 'white',
+            fontWeight: '500',
+            margin: '0 0 2rem 0'
+          }}>
+            Most hiring stacks capture data, not intent. <span style={{ color: '#3B82F6', fontWeight: '700' }}>Inference</span> (AI-assisted interpretation) turns your hiring inputs into <span style={{ color: '#3B82F6', fontWeight: '700' }}>signal</span> — so the right actions happen sooner.
           </p>
-          <div className="hero-badge" style={{ marginTop: '50px' }}>
-            <h2 className="badge-text">
-              “I partner with growing teams to strengthen their hiring — embedding where needed and/or implementing practical technology that improves clarity and outcomes." ~~ Paul Duplantis
-            </h2>
-          </div>
+          <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#94A3B8', margin: '0 auto', maxWidth: '650px' }}>
+            HiringSignals.ai helps growing teams reduce hiring friction by adding an inference layer to their existing stack — so the right candidates get routed, qualified, and decided on faster.
+          </p>
+          <div style={{
+            position: 'absolute',
+            bottom: '-2px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80px',
+            height: '4px',
+            background: '#3B82F6',
+            borderRadius: '4px',
+            boxShadow: '0 0 15px rgba(59, 130, 246, 0.8)'
+          }}></div>
         </div>
       </div>
 

@@ -117,14 +117,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/audit" element={<SignalAudit />} />
         </Routes>
-        
-        {/* Final CTA (Global Footer) */}
-        <div className="footer-cta">
-            <h4 className="footer-title">Ready to isolate the signal?</h4>
-            <Link to="/audit" className="footer-button" style={{ textDecoration: 'none', display: 'inline-block' }}>
-              Hiring Signal Check
-            </Link>
-        </div>
       </div>
     </Router>
   );

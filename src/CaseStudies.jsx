@@ -250,9 +250,9 @@ const CaseStudies = () => {
 
         {/* Global Insight */}
         <div className="quote-box mt-large">
-          <h5 className="text-blue bold" style={{ marginBottom: '10px', fontSize: '1.1rem' }}>Global Architect's Insight</h5>
+          <h5 className="text-blue bold" style={{ marginBottom: '10px', fontSize: '1.1rem' }}>Paul's insight</h5>
           <p className="quote-text-large">
-            "When these 5 layers are tuned correctly, hiring stops being a series of lucky accidents and starts being a high-fidelity system. We aren't just filling seats; we are engineering the movement of talent into opportunity with zero signal loss."
+            "When these 5 layers are tuned correctly, hiring stops being a series of lucky accidents and starts being a high-fidelity system. Where you aren't just filling seats; you are engineering the movement of talent into opportunity with less signal loss."
           </p>
         </div>
 

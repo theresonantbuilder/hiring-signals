@@ -1,16 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import paulPhoto from './assets/PaulDuplantis profile pic  Sept 2023.jpg';
 
 const Advisors = () => {
-  const partnerSlots = [
-    { id: 1, name: "Partner Node 01", specialty: "Sourcing Intelligence", status: "Vetting" },
-    { id: 2, name: "Partner Node 02", specialty: "Selection Algorithms", status: "Vetting" },
-    { id: 3, name: "Partner Node 03", specialty: "Workflow Automation", status: "Vetting" },
-    { id: 4, name: "Partner Node 04", specialty: "Data Security", status: "Vetting" },
-    { id: 5, name: "Partner Node 05", specialty: "Candidate Experience", status: "Vetting" },
-    { id: 6, name: "Partner Node 06", specialty: "Predictive Analytics", status: "Vetting" },
-  ];
-
   return (
     <section id="advisors" className="advisors-section" style={{ padding: '40px 0' }}>
       <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 20px' }}>
@@ -50,14 +42,25 @@ const Advisors = () => {
               position: 'absolute', 
               bottom: '15px', 
               right: '-10px', 
-              backgroundColor: '#3B82F6', 
-              padding: '8px 16px', 
-              borderRadius: '6px',
-              fontSize: '11px', 
-              fontWeight: 'bold', 
-              letterSpacing: '1px'
             }}>
-              LEAD ARCHITECT
+              <a 
+                href="https://www.linkedin.com/in/paulduplantis/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={{ 
+                  backgroundColor: '#3B82F6', 
+                  padding: '8px 16px', 
+                  borderRadius: '6px',
+                  fontSize: '11px', 
+                  fontWeight: 'bold', 
+                  letterSpacing: '1px',
+                  color: 'white',
+                  textDecoration: 'none',
+                  display: 'inline-block'
+                }}
+              >
+                LINKEDIN
+              </a>
             </div>
           </div>
 
@@ -72,26 +75,30 @@ const Advisors = () => {
               textTransform: 'uppercase', 
               letterSpacing: '1px' 
             }}>
-              Lead Systems Architect & Agentic Engineer
+              Hiring Systems Advisor
             </p>
             
             <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#CBD5E1', marginBottom: '1.5rem' }}>
-              <strong>The Journey:</strong> With a career spanning two decades across business consultancy, strategic marketing, and technical talent acquisition, I have operated at the intersection of organizational growth and human capital. My journey has been defined by a singular observation: the exchange between talent and opportunity is fundamentally stalled by systemic noise.
+              <strong>The Journey:</strong> Over the past two decades I’ve worked across business growth, marketing, and technical talent acquisition — close enough to hiring to see what actually breaks it. The pattern is consistent: the exchange between candidates and opportunity gets stalled not by a lack of applicants, but by systemic noise — unclear routing, slow follow-up, late qualification, and decision insight trapped in threads and memory.
             </p>
 
             <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#CBD5E1', marginBottom: '1.5rem' }}>
-              <strong>The Window of Opportunity:</strong> I recognize a unique moment to leverage <strong>Agentic Engineering</strong> to fix the "black hole" of traditional hiring. My mission is to restore health to the hiring exchange—engineering systems where candidates are seen for their true potential and hiring teams can act with absolute data-confidence.
+              <strong>The Shift:</strong> AI has changed the landscape. For the first time, hiring teams can access practical inference at scale — not just keyword search, but tools that can interpret intent, context, and fit signals across messy real-world data. Used carefully, that’s a genuine advantage: faster qualification, clearer handoffs, and more consistent decisions. Used carelessly, it’s just more automation layered onto broken workflows — or “AI for the sake of AI,” which creates new failure modes and erodes trust.
+            </p>
+
+            <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#CBD5E1', marginBottom: '1.5rem' }}>
+              <strong>How I Help:</strong> I help growing teams bring structure to the funnel first, then integrate modern tools where they create measurable lift. My approach is vendor-neutral and pragmatic: identify where signal is being lost, clarify ownership and routing, and apply the right level of automation only where it improves speed and clarity without dehumanizing the process.
             </p>
 
             <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#CBD5E1' }}>
-              <strong>The Commitment:</strong> I don't just recommend tools; I architect the logic that allows them to communicate. As your Lead Advisor, I act as the primary conductor—ensuring your hiring stack is tuned to a single, high-fidelity signal that favors both the talent and the team.
+              <strong>Why Me:</strong> I bring a blended perspective — time in the field as a recruiter, experience advising businesses, and a deep curiosity about Generative AI. I’m also building my own discovery and matching framework to pressure-test what works (and what doesn’t) so I can help teams integrate these capabilities responsibly. The goal isn’t to “AI-ify hiring.” It’s to restore signal and make hiring more human by removing unnecessary friction.
             </p>
           </div>
         </div>
 
-        {/* SECTION 2: THE LAB (idig) */}
+        {/* SECTION 2: Hiring Signal Check */}
         <div className="lab-section" style={{ 
-          textAlign: 'center', 
+          textAlign: 'left', 
           padding: '40px', 
           borderRadius: '20px', 
           border: '1px solid #E2E8F0', 
@@ -99,48 +106,25 @@ const Advisors = () => {
           backgroundColor: '#F8FAFC' 
         }}>
           <p style={{ color: '#3B82F6', fontWeight: 'bold', textTransform: 'uppercase', fontSize: '11px', letterSpacing: '2px', marginBottom: '10px' }}>
-            Research & Development
+            System Diagnostic
           </p>
-          <h3 style={{ fontSize: '1.8rem', color: '#1E293B', marginBottom: '20px' }}>iDIG: Deep Inquiry Generator</h3>
+          <h3 style={{ fontSize: '1.8rem', color: '#1E293B', marginBottom: '20px' }}>Hiring Signal Check</h3>
           <div style={{ textAlign: 'left', maxWidth: '850px', margin: '0 auto', fontSize: '1.05rem', color: '#475569', lineHeight: '1.7' }}>
             <p style={{ marginBottom: '1rem' }}>
-              <strong>iDIG</strong> is my ongoing research and development lab—a proving ground where I experiment with signal conditioning, agentic discovery loops, and applied signaling theory. It’s where I test how language, structure, and context shape discovery.
+              If you’re unsure where to start, I use a simple diagnostic called the <Link to="/audit" style={{ color: '#3B82F6', fontWeight: '600', textDecoration: 'none' }}>Hiring Signal Check</Link>. It’s designed to quickly reveal where signal is being lost across your funnel — and where practical tools or workflow changes would create the most impact.
             </p>
             <p style={{ marginBottom: '1rem' }}>
-              Through HiringSignals, I partner with select advisory firms and technology providers to implement these solutions inside client organizations. My role is not to resell tools, but to ensure they are deployed with architectural clarity—so signal is strengthened rather than distorted.
+              We’ll look at a few high-leverage areas, such as:
             </p>
-            <p style={{ borderTop: '1px solid #E2E8F0', paddingTop: '20px', fontSize: '0.95rem', color: '#64748B' }}>
-              <strong>iDIG remains a private R&D environment. HiringSignals is where those insights are applied.</strong>
+            <ul style={{ paddingLeft: '20px', marginBottom: '1rem' }}>
+              <li>Response speed & routing: Are applicants getting to the right person fast enough?</li>
+              <li>Early qualification: Are eligibility, location, and must-have requirements verified early?</li>
+              <li>Interview signal capture: Are interview insights structured and retrievable, or stuck in memory and email?</li>
+              <li>Offer & onboarding momentum: Where do candidates stall or ghost after “yes”?</li>
+            </ul>
+            <p>
+              The output is a clear set of priorities: what to fix first, what can wait, and which categories of tools (if any) are worth evaluating — based on your team size, hiring volume, and constraints.
             </p>
-          </div>
-        </div>
-
-        {/* SECTION 3: PARTNER NETWORK */}
-        <div className="network-section">
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h3 style={{ fontSize: '1.8rem', color: '#1E293B', marginBottom: '10px' }}>The Partner Network</h3>
-            <p style={{ color: '#64748B' }}>Specialized Intelligence Nodes curated for high-performance ecosystems.</p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-            {partnerSlots.map(partner => (
-              <div key={partner.id} style={{ 
-                padding: '25px', borderRadius: '12px', border: '1px solid #E2E8F0', 
-                backgroundColor: '#fff'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                  <div style={{ width: '32px', height: '32px', borderRadius: '6px', backgroundColor: '#F1F5F9', border: '1px solid #E2E8F0' }}></div>
-                  <span style={{ fontSize: '9px', fontWeight: 'bold', color: '#94A3B8', border: '1px solid #E2E8F0', padding: '2px 6px', borderRadius: '4px' }}>
-                    {partner.status}
-                  </span>
-                </div>
-                <h4 style={{ margin: '0 0 4px 0', color: '#1E293B' }}>{partner.name}</h4>
-                <p style={{ margin: 0, fontSize: '13px', color: '#3B82F6', fontWeight: '600' }}>{partner.specialty}</p>
-                <p style={{ marginTop: '12px', fontSize: '12px', color: '#94A3B8', fontStyle: 'italic' }}>
-                  A core component of the Hiring Signals integrated architecture.
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
