@@ -128,24 +128,75 @@ const SignalAudit = () => {
       _subject: `Hiring Signal Check - ${userInfo.name || 'Anonymous'}`,
       _template: "table",
       _captcha: "false",
-      name: userInfo.name,
-      email: userInfo.email,
-      phone: userInfo.phone,
-      timestamp: new Date().toLocaleString(),
-      selections: JSON.stringify(selections, null, 2),
-      comments: JSON.stringify(comments, null, 2),
-      otherValues: JSON.stringify(otherValues, null, 2)
+      "01_Name": userInfo.name,
+      "02_Email": userInfo.email,
+      "03_Phone": userInfo.phone,
+      "04_Timestamp": new Date().toLocaleString(),
+    };
+
+    // Dynamically populate emailData with readable questions and answers
+    layers.forEach((layer) => {
+      if (layer.type === 'detailed') {
+        layer.sections.forEach((section, sIndex) => {
+          section.questions.forEach((q, qIndex) => {
+            const answers = [];
+            q.options.forEach((opt, oIndex) => {
+              const optId = `L${layer.id}-S${sIndex}-Q${qIndex}-O${oIndex}`;
+              if (selections[optId]) {
+                let ans = opt.label;
+                // Check for "Other" input
+                if (opt.label.includes("Other") && otherValues[optId]) {
+                  ans += `: ${otherValues[optId]}`;
+                }
+                
+                // Check sub-options
+                if (opt.subOptions) {
+                   const subs = [];
+                   opt.subOptions.forEach((sub, subIndex) => {
+                     const subId = `${optId}-SUB${subIndex}`;
+                     if (selections[subId]) {
+                        let subVal = sub;
+                        if (sub.includes("Other") && otherValues[subId]) {
+                           subVal += `: ${otherValues[subId]}`;
+                        }
+                        subs.push(subVal);
+                     }
+                   });
+                   if (subs.length > 0) {
+                     ans += ` [${subs.join(', ')}]`;
+                   }
+                }
+                answers.push(ans);
+              }
+            });
+            
+            // Construct a readable key for the email table
+            n emailData[questionKey] = answers.join(' | ');
+            }
+          });
+
+          // Section Q&A
+          const sectionKey = `L${layer.id}-S${sIndex}`;
+          if (comments[sectionKey]) {
+             const qaKey = `${layer.title} - ${section.title} (Q&A)`;
+             emailData[qaKey] = com 
+        });
+      } else {
+        // Standard Layer
+        const sectionKey = `L${layer.id}-Main`;
+        if (comments[sectionKey]) {
+           const probeKey = `${layer.title}`;
+           emailData[probeKey] = comments[sectionKey];
+        }
     };
 
     const reportData = {
       timestamp: new Date().toLocaleString(),
       userInfo,
-      selections,
-      otherValues,
-      comments
-    };
-
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
+      readableSummary: emailData,
+      rawSelections: selections,
+      rawOtherValues: otherValues,
+      rawCommStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "hiring_signals_audit.json");
