@@ -137,6 +137,9 @@ const Home = () => {
           <p style={{ fontSize: '1.15rem', lineHeight: '1.7', color: '#94A3B8', margin: '0 auto', maxWidth: '650px' }}>
             HiringSignals.ai helps growing teams reduce hiring friction by adding an inference layer to their existing stack — so the right candidates get routed, qualified, and decided on faster.
           </p>
+          <p style={{ fontSize: '1rem', lineHeight: '1.7', color: '#94A3B8', margin: '1.5rem auto 0', maxWidth: '650px', fontStyle: 'italic' }}>
+            I start with a conversation, map where your hiring signal breaks down, then introduce the right tools and partners to fix it. ~~ Paul Duplantis
+          </p>
           <div style={{
             position: 'absolute',
             bottom: '-2px',
