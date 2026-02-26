@@ -93,6 +93,15 @@ const Advisors = () => {
             <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#CBD5E1' }}>
               <strong>Why Me:</strong> I bring a blended perspective — time in the field as a recruiter, experience advising businesses, and a deep curiosity about Generative AI. I’m also building my own discovery and matching framework to pressure-test what works (and what doesn’t) so I can help teams integrate these capabilities responsibly. The goal isn’t to “AI-ify hiring.” It’s to restore signal and make hiring more human by removing unnecessary friction.
             </p>
+
+            <div style={{ display: 'flex', gap: '20px', margin: '30px 0' }}>
+              <div style={{ width: '60px', height: '4px', background: '#3B82F6', borderRadius: '4px', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}></div>
+              <div style={{ width: '60px', height: '4px', background: '#3B82F6', borderRadius: '4px', boxShadow: '0 0 15px rgba(59, 130, 246, 0.5)' }}></div>
+            </div>
+
+            <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#CBD5E1' }}>
+              Learn more about my experimental discovery framework <a href="https://i-dig.io" target="_blank" rel="noopener noreferrer" style={{ color: '#3B82F6', textDecoration: 'none', fontWeight: 'bold' }}>i-DIG.io</a>
+            </p>
           </div>
         </div>
 
