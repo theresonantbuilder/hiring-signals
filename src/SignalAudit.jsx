@@ -127,7 +127,6 @@ const SignalAudit = () => {
     const emailData = {
       _subject: `Hiring Signal Check - ${userInfo.name || 'Anonymous'}`,
       _template: "table",
-      _captcha: "false",
       "01_Name": userInfo.name,
       "02_Company": userInfo.company,
       "03_Email": userInfo.email,
@@ -208,21 +207,13 @@ const SignalAudit = () => {
 
     // Send email
     try {
-      const formData = new FormData();
-      Object.entries(emailData).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-
-      // Attach the full JSON report
-      const jsonBlob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
-      formData.append('audit_report.json', jsonBlob, 'audit_report.json');
-
       const response = await fetch("https://formsubmit.co/ajax/paul@hiringsignals.ai", {
         method: "POST",
-        headers: { 
+        headers: {
+          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: formData
+        body: JSON.stringify(emailData)
       });
       
       if (response.ok) {
