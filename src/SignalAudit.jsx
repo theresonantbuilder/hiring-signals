@@ -163,6 +163,33 @@ const SignalAudit = () => {
       return;
     }
 
+    let cloudReportUrl = "Not saved to cloud";
+
+    // 1. Upload to Vercel Blob via API
+    try {
+      const formData = new FormData();
+      formData.append('userInfo', JSON.stringify(userInfo));
+      formData.append('selections', JSON.stringify(selections));
+      formData.append('otherValues', JSON.stringify(otherValues));
+      formData.append('comments', JSON.stringify(comments));
+      formData.append('timestamp', new Date().toLocaleString());
+
+      // Append audio blobs
+      for (const [key, url] of Object.entries(recordings)) {
+        const blob = await fetch(url).then(r => r.blob());
+        formData.append(key, blob, `${key}.webm`);
+      }
+
+      const uploadResponse = await fetch('/api/save-audit', { method: 'POST', body: formData });
+      
+      if (uploadResponse.ok) {
+        const result = await uploadResponse.json();
+        cloudReportUrl = result.url;
+      }
+    } catch (error) {
+      console.error("Cloud upload failed:", error);
+    }
+
     // Prepare data for email (flat structure works best for form handlers)
     const emailData = {
       _subject: `Hiring Signal Check - ${userInfo.name || 'Anonymous'}`,
@@ -172,6 +199,7 @@ const SignalAudit = () => {
       email: userInfo.email,
       phone: userInfo.phone,
       timestamp: new Date().toLocaleString(),
+      audit_report_link: cloudReportUrl,
       selections: JSON.stringify(selections, null, 2),
       comments: JSON.stringify(comments, null, 2),
       otherValues: JSON.stringify(otherValues, null, 2)
@@ -183,9 +211,8 @@ const SignalAudit = () => {
       selections,
       otherValues,
       comments,
-      // Note: Audio blobs are local to the browser and cannot be saved to JSON directly.
-      // In a production app, these would be uploaded to a server first.
-      recordings_status: "Audio files are local to browser session."
+      cloud_url: cloudReportUrl,
+      recordings_status: "Audio files uploaded to cloud."
     };
 
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
