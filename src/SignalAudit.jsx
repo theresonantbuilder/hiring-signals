@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 const layers = [
     {
@@ -90,13 +90,9 @@ const SignalAudit = () => {
   const [selections, setSelections] = useState({});
   const [otherValues, setOtherValues] = useState({});
   const [comments, setComments] = useState({});
-  const [recordings, setRecordings] = useState({});
-  const [recordingActive, setRecordingActive] = useState(null); // Stores key of currently recording section
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '' });
-  const mediaRecorderRef = useRef(null);
-  const audioChunksRef = useRef([]);
 
   const toggleSelection = (id) => {
     setSelections(prev => ({ ...prev, [id]: !prev[id] }));
@@ -114,45 +110,6 @@ const SignalAudit = () => {
     setComments(prev => ({ ...prev, [key]: value }));
   };
 
-  const toggleRecording = async (key) => {
-    if (recordingActive === key) {
-      // Stop Recording
-      if (mediaRecorderRef.current) {
-        mediaRecorderRef.current.stop();
-        setRecordingActive(null);
-      }
-    } else {
-      // Start Recording
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        alert("Audio recording is not supported in this browser.");
-        return;
-      }
-
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const recorder = new MediaRecorder(stream);
-        mediaRecorderRef.current = recorder;
-        audioChunksRef.current = [];
-
-        recorder.ondataavailable = (event) => {
-          if (event.data.size > 0) audioChunksRef.current.push(event.data);
-        };
-
-        recorder.onstop = () => {
-          const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
-          const audioUrl = URL.createObjectURL(audioBlob);
-          setRecordings(prev => ({ ...prev, [key]: audioUrl }));
-        };
-
-        recorder.start();
-        setRecordingActive(key);
-      } catch (err) {
-        console.error("Microphone access error:", err);
-        alert("Could not access microphone. Please allow permissions.");
-      }
-    }
-  };
-
   const handleUserInfoChange = (e) => {
     const { name, value } = e.target;
     setUserInfo(prev => ({ ...prev, [name]: value }));
@@ -165,37 +122,6 @@ const SignalAudit = () => {
     }
 
     setIsSubmitting(true);
-    let cloudReportUrl = "Not saved to cloud";
-
-    // 1. Upload to Vercel Blob via API
-    try {
-      const formData = new FormData();
-      formData.append('userInfo', JSON.stringify(userInfo));
-      formData.append('selections', JSON.stringify(selections));
-      formData.append('otherValues', JSON.stringify(otherValues));
-      formData.append('comments', JSON.stringify(comments));
-      formData.append('timestamp', new Date().toLocaleString());
-
-      // Append audio blobs
-      for (const [key, url] of Object.entries(recordings)) {
-        const blob = await fetch(url).then(r => r.blob());
-        formData.append(key, blob, `${key}.webm`);
-      }
-
-      const uploadResponse = await fetch('/api/save-audit', { method: 'POST', body: formData });
-      
-      if (uploadResponse.ok) {
-        const result = await uploadResponse.json();
-        cloudReportUrl = result.url;
-      } else {
-        const errText = await uploadResponse.text();
-        console.error("Upload failed:", uploadResponse.status, errText);
-        alert(`Cloud upload failed (Status ${uploadResponse.status}): ${errText}\n\nIf running locally, ensure you use 'vercel dev'. If on Vercel, ensure Blob store is connected.`);
-      }
-    } catch (error) {
-      console.error("Cloud upload failed:", error);
-      alert(`Cloud upload failed: ${error.message}`);
-    }
 
     // Prepare data for email (flat structure works best for form handlers)
     const emailData = {
@@ -206,7 +132,6 @@ const SignalAudit = () => {
       email: userInfo.email,
       phone: userInfo.phone,
       timestamp: new Date().toLocaleString(),
-      audit_report_link: cloudReportUrl,
       selections: JSON.stringify(selections, null, 2),
       comments: JSON.stringify(comments, null, 2),
       otherValues: JSON.stringify(otherValues, null, 2)
@@ -217,9 +142,7 @@ const SignalAudit = () => {
       userInfo,
       selections,
       otherValues,
-      comments,
-      cloud_url: cloudReportUrl,
-      recordings_status: "Audio files uploaded to cloud."
+      comments
     };
 
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
@@ -273,15 +196,14 @@ const SignalAudit = () => {
             }
             if (!questionAnswered) return false;
           }
-          // Check Q&A (comment or recording)
+          // Check Q&A (comment)
           const sectionKey = `L${layer.id}-S${sIndex}`;
-          if (!comments[sectionKey] && !recordings[sectionKey]) return false;
+          if (!comments[sectionKey]) return false;
         }
       } else {
         // Standard layer
-        // We only track recordings for standard layers in the current code
         const sectionKey = `L${layer.id}-Main`;
-        if (!comments[sectionKey] && !recordings[sectionKey]) return false;
+        if (!comments[sectionKey]) return false;
       }
     }
     return true;
@@ -432,17 +354,6 @@ const SignalAudit = () => {
                         value={comments[sectionKey] || ''}
                         onChange={(e) => handleCommentChange(sectionKey, e.target.value)}
                       ></textarea>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                        <button 
-                          className="rec-btn" 
-                          onClick={() => toggleRecording(sectionKey)}
-                          style={{ backgroundColor: recordingActive === sectionKey ? '#ef4444' : 'var(--accent-red)' }}
-                        >
-                          {recordingActive === sectionKey ? "STOP RECORDING" : "RECORD ANSWER"}
-                        </button>
-                        {recordings[sectionKey] && <span style={{ color: 'var(--accent-green)', fontSize: '12px' }}>✓ Audio Saved</span>}
-                        {recordingActive === sectionKey && <span className="rec-timer" style={{ animation: 'pulse 1s infinite' }}>● Recording...</span>}
-                      </div>
                     </div>
                   </div>
                   );
@@ -465,17 +376,6 @@ const SignalAudit = () => {
                         value={comments[sectionKey] || ''}
                         onChange={(e) => handleCommentChange(sectionKey, e.target.value)}
                   ></textarea>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <button 
-                      className="rec-btn" 
-                      onClick={() => toggleRecording(sectionKey)}
-                      style={{ backgroundColor: recordingActive === sectionKey ? '#ef4444' : 'var(--accent-red)' }}
-                    >
-                      {recordingActive === sectionKey ? "STOP RECORDING" : "RECORD ANSWER"}
-                    </button>
-                    {recordings[sectionKey] && <span style={{ color: 'var(--accent-green)', fontSize: '12px' }}>✓ Audio Saved</span>}
-                    {recordingActive === sectionKey && <span className="rec-timer" style={{ animation: 'pulse 1s infinite' }}>● Recording...</span>}
-                  </div>
 
                   <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', margin: '40px auto' }}>
                     <div style={{ ...separatorStyle, margin: 0 }}></div>
