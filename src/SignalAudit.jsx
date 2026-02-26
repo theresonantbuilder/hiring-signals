@@ -93,6 +93,7 @@ const SignalAudit = () => {
   const [recordings, setRecordings] = useState({});
   const [recordingActive, setRecordingActive] = useState(null); // Stores key of currently recording section
   const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '' });
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
@@ -163,6 +164,7 @@ const SignalAudit = () => {
       return;
     }
 
+    setIsSubmitting(true);
     let cloudReportUrl = "Not saved to cloud";
 
     // 1. Upload to Vercel Blob via API
@@ -185,9 +187,14 @@ const SignalAudit = () => {
       if (uploadResponse.ok) {
         const result = await uploadResponse.json();
         cloudReportUrl = result.url;
+      } else {
+        const errText = await uploadResponse.text();
+        console.error("Upload failed:", uploadResponse.status, errText);
+        alert(`Cloud upload failed (Status ${uploadResponse.status}): ${errText}\n\nIf running locally, ensure you use 'vercel dev'. If on Vercel, ensure Blob store is connected.`);
       }
     } catch (error) {
       console.error("Cloud upload failed:", error);
+      alert(`Cloud upload failed: ${error.message}`);
     }
 
     // Prepare data for email (flat structure works best for form handlers)
@@ -245,6 +252,7 @@ const SignalAudit = () => {
     }
 
     setShowSubmitModal(false);
+    setIsSubmitting(false);
   };
 
   const checkCompletion = () => {
@@ -562,8 +570,8 @@ const SignalAudit = () => {
                 <button className="btn-secondary" onClick={() => setShowSubmitModal(false)}>
                   Cancel
                 </button>
-                <button className="btn-primary" onClick={handleFinalSubmit}>
-                  Submit Audit
+                <button className="btn-primary" onClick={handleFinalSubmit} disabled={isSubmitting}>
+                  {isSubmitting ? "Processing..." : "Submit Audit"}
                 </button>
               </div>
             </div>
