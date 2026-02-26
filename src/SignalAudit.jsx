@@ -157,11 +157,23 @@ const SignalAudit = () => {
     setUserInfo(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleFinalSubmit = () => {
-    if (!userInfo.email) {
+  const handleFinalSubmit = u
       alert("Email address is required to submit.");
       return;
     }
+
+    // Prepare data for email (flat structure works best for form handlers)
+    const emailData = {
+      _subject: `Hiring Signal Check - ${userInfo.name || 'Anonymous'}`,
+      _template: "table",
+      name: userInfo.name,
+      email: userInfo.email,
+      phone: userInfo.phone,
+      timestamp: new Date().toLocaleString(),
+      selections: JSON.stringify(selections, null, 2),
+      comments: JSON.stringify(comments, null, 2),
+      otherValues: JSON.stringify(otherValues, null, 2)
+    };
 
     const reportData = {
       timestamp: new Date().toLocaleString(),
@@ -173,11 +185,7 @@ const SignalAudit = () => {
       // In a production app, these would be uploaded to a server first.
       recordings_status: "Audio files are local to browser session."
     };
-
-    console.log("Audit Report Data:", reportData);
-
-    // Create a downloadable JSON file so data isn't lost
-    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
+," + encodeURIComponent(JSON.stringify(reportData, null, 2));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "hiring_signals_audit.json");
@@ -185,12 +193,31 @@ const SignalAudit = () => {
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
 
+    // Send email
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/paul@hiringsignals.ai", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(emailData)
+      });
+      
+      if (response.ok) {
+        alert("Audit submitted successfully! A copy has also been downloaded to your computer.");
+      } else {
+        alert("Audit downloaded to your computer. (Email submission failed, please send the file manually).");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Audit downloaded to your computer. (Email submission failed, please send the file manually).");
+    }
+
     setShowSubmitModal(false);
-    alert("Report downloaded to your computer!\n\nNOTE: Currently, this data lives only in your browser. To forward this to your email automatically, we would need to integrate a service like EmailJS.");
   };
 
-  const checkCompletion = () => {
-    for (const layer of layers) {
+  const checkCompletion
       if (layer.type === 'detailed') {
         for (let sIndex = 0; sIndex < layer.sections.length; sIndex++) {
           const section = layer.sections[sIndex];

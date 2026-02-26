@@ -14,12 +14,32 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In a real application, you would handle form submission here (e.g., send to API)
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message. We will be in touch shortly.');
-    setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/paul@hiringsignals.ai", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New Contact Inquiry - ${formData.name}`,
+          ...formData
+        })
+      });
+
+      if (response.ok) {
+        alert('Thank you for your message. We will be in touch shortly.');
+        setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+      } else {
+        alert('There was an issue sending your message. Please try again later.');
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert('There was an issue sending your message. Please try again later.');
+    }
   };
 
   return (
