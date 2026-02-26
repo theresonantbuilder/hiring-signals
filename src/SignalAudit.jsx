@@ -92,7 +92,7 @@ const SignalAudit = () => {
   const [comments, setComments] = useState({});
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '' });
+  const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '', company: '' });
 
   const toggleSelection = (id) => {
     setSelections(prev => ({ ...prev, [id]: !prev[id] }));
@@ -129,9 +129,10 @@ const SignalAudit = () => {
       _template: "table",
       _captcha: "false",
       "01_Name": userInfo.name,
-      "02_Email": userInfo.email,
-      "03_Phone": userInfo.phone,
-      "04_Timestamp": new Date().toLocaleString(),
+      "02_Company": userInfo.company,
+      "03_Email": userInfo.email,
+      "04_Phone": userInfo.phone,
+      "05_Timestamp": new Date().toLocaleString(),
     };
 
     // Dynamically populate emailData with readable questions and answers
@@ -171,24 +172,22 @@ const SignalAudit = () => {
             });
             
             // Construct a readable key for the email table
-            n emailData[questionKey] = answers.join(' | ');
-            }
+            const questionKey = `${layer.title} - ${q.title || q.text}`;
+            emailData[questionKey] = answers.length > 0 ? answers.join(' | ') : "Not Selected";
           });
 
           // Section Q&A
           const sectionKey = `L${layer.id}-S${sIndex}`;
-          if (comments[sectionKey]) {
-             const qaKey = `${layer.title} - ${section.title} (Q&A)`;
-             emailData[qaKey] = com 
+          const qaKey = `${layer.title} - ${section.title} (Q&A)`;
+          emailData[qaKey] = comments[sectionKey] || "No response";
         });
       } else {
         // Standard Layer
         const sectionKey = `L${layer.id}-Main`;
-        if (comments[sectionKey]) {
-           const probeKey = `${layer.title}`;
-           emailData[probeKey] = comments[sectionKey];
-        }
-    };
+        const probeKey = `${layer.title}`;
+        emailData[probeKey] = comments[sectionKey] || "No response";
+      }
+    });
 
     const reportData = {
       timestamp: new Date().toLocaleString(),
@@ -196,7 +195,10 @@ const SignalAudit = () => {
       readableSummary: emailData,
       rawSelections: selections,
       rawOtherValues: otherValues,
-      rawCommStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
+      rawComments: comments
+    };
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "hiring_signals_audit.json");
@@ -206,13 +208,21 @@ const SignalAudit = () => {
 
     // Send email
     try {
+      const formData = new FormData();
+      Object.entries(emailData).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+
+      // Attach the full JSON report
+      const jsonBlob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
+      formData.append('audit_report.json', jsonBlob, 'audit_report.json');
+
       const response = await fetch("https://formsubmit.co/ajax/paul@hiringsignals.ai", {
         method: "POST",
         headers: { 
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(emailData)
+        body: formData
       });
       
       if (response.ok) {
@@ -498,6 +508,15 @@ const SignalAudit = () => {
                 onChange={handleUserInfoChange}
               />
               
+              <input 
+                type="text" 
+                name="company"
+                placeholder="Company Name" 
+                className="modal-input"
+                value={userInfo.company}
+                onChange={handleUserInfoChange}
+              />
+
               <input 
                 type="email" 
                 name="email"
