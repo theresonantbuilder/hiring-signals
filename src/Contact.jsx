@@ -26,6 +26,7 @@ const Contact = () => {
         },
         body: JSON.stringify({
           _subject: `New Contact Inquiry - ${formData.name}`,
+          _captcha: "false",
           ...formData
         })
       });
