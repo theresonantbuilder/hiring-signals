@@ -93,6 +93,9 @@ const SignalAudit = () => {
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [userInfo, setUserInfo] = useState({ name: '', email: '', phone: '', company: '' });
+  const [contactForm, setContactForm] = useState({ name: '', email: '', availability: '' });
+  const [contactSubmitting, setContactSubmitting] = useState(false);
+  const [contactSent, setContactSent] = useState(false);
 
   const toggleSelection = (id) => {
     setSelections(prev => ({ ...prev, [id]: !prev[id] }));
@@ -266,6 +269,35 @@ const SignalAudit = () => {
     return true;
   };
 
+  const handleContactChange = (e) => {
+    const { name, value } = e.target;
+    setContactForm(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    if (!contactForm.email) return;
+    setContactSubmitting(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/paul@hiringsignals.ai", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `Availability Request - ${contactForm.name || 'Anonymous'}`,
+          _captcha: "false",
+          ...contactForm
+        })
+      });
+      if (response.ok) {
+        setContactSent(true);
+        setContactForm({ name: '', email: '', availability: '' });
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+    }
+    setContactSubmitting(false);
+  };
+
   const handleSubmit = () => {
     if (checkCompletion()) {
       setShowSubmitModal(true);
@@ -294,7 +326,11 @@ const SignalAudit = () => {
             
             <h4 style={{ color: 'white', fontSize: '1.2rem', marginBottom: '1rem', marginTop: '2rem' }}>Two ways to complete it:</h4>
             <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
-              <li style={{ marginBottom: '0.8rem' }}><strong style={{ color: '#3B82F6' }}>Talk it through (recommended):</strong> book a short Zoom and I’ll guide the questions while I capture the signal in real time.</li>
+              <li style={{ marginBottom: '0.8rem' }}>
+                <strong style={{ color: '#3B82F6' }}>Talk it through (recommended):</strong>{' '}
+                <a href="#contact-paul" style={{ color: '#3B82F6', textDecoration: 'underline', cursor: 'pointer' }}>book</a>{' '}
+                a short Zoom and I&apos;ll guide the questions while I capture the signal in real time.
+              </li>
               <li><strong style={{ color: '#3B82F6' }}>Fill it out here:</strong> answer each section at your own pace (type or record your voice).</li>
             </ul>
 
@@ -439,7 +475,52 @@ const SignalAudit = () => {
                     <div style={{ ...separatorStyle, margin: 0 }}></div>
                   </div>
 
-                  <h5 className="impact-card-title" style={{ marginBottom: '10px' }}>Reach out to Paul Duplantis if you would like a deep conversation on your hiring tech stack to help identify potential solutions for your needs.</h5>
+                  <p id='contact-paul' style={{ color: '#94A3B8', fontSize: '1rem', lineHeight: '1.7', marginBottom: '1.5rem' }}>
+                    Let me know your availability and I will reach out for a 15 minute conversation on your hiring stack. There is no charge for the assessment and the goal is to find partners that align with your needs. I collect a fee from the partner should the integration go through plus I am available as an advisor to work with your team to help better understand your needs.
+                  </p>
+                  {contactSent ? (
+                    <p style={{ color: '#3B82F6', fontWeight: '600', fontSize: '1rem' }}>
+                      Thank you! Paul will be in touch shortly.
+                    </p>
+                  ) : (
+                    <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '480px' }}>
+                      <input
+                        type="text"
+                        name="name"
+                        value={contactForm.name}
+                        onChange={handleContactChange}
+                        placeholder="Your Name"
+                        className="modal-input"
+                        style={{ marginBottom: 0 }}
+                      />
+                      <input
+                        type="email"
+                        name="email"
+                        value={contactForm.email}
+                        onChange={handleContactChange}
+                        placeholder="Email Address (Required)"
+                        required
+                        className="modal-input"
+                        style={{ marginBottom: 0 }}
+                      />
+                      <textarea
+                        name="availability"
+                        value={contactForm.availability}
+                        onChange={handleContactChange}
+                        placeholder="Let me know your availability..."
+                        className="modal-input"
+                        style={{ marginBottom: 0, minHeight: '90px', resize: 'vertical', fontFamily: 'inherit' }}
+                      />
+                      <button
+                        type="submit"
+                        disabled={contactSubmitting}
+                        className="inquire-btn"
+                        style={{ padding: '12px 28px', fontSize: '0.95rem', textTransform: 'uppercase', letterSpacing: '1px', alignSelf: 'flex-start' }}
+                      >
+                        {contactSubmitting ? 'Sending...' : 'Send Message'}
+                      </button>
+                    </form>
+                  )}
                     </>
                     );
                   })()}
