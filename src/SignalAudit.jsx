@@ -157,7 +157,8 @@ const SignalAudit = () => {
     setUserInfo(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleFinalSubmit = u
+  const handleFinalSubmit = async () => {
+    if (!userInfo.email) {
       alert("Email address is required to submit.");
       return;
     }
@@ -166,6 +167,7 @@ const SignalAudit = () => {
     const emailData = {
       _subject: `Hiring Signal Check - ${userInfo.name || 'Anonymous'}`,
       _template: "table",
+      _captcha: "false",
       name: userInfo.name,
       email: userInfo.email,
       phone: userInfo.phone,
@@ -185,7 +187,8 @@ const SignalAudit = () => {
       // In a production app, these would be uploaded to a server first.
       recordings_status: "Audio files are local to browser session."
     };
-," + encodeURIComponent(JSON.stringify(reportData, null, 2));
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(reportData, null, 2));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download", "hiring_signals_audit.json");
@@ -217,7 +220,8 @@ const SignalAudit = () => {
     setShowSubmitModal(false);
   };
 
-  const checkCompletion
+  const checkCompletion = () => {
+    for (const layer of layers) {
       if (layer.type === 'detailed') {
         for (let sIndex = 0; sIndex < layer.sections.length; sIndex++) {
           const section = layer.sections[sIndex];
