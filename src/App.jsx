@@ -24,12 +24,10 @@ export default function App() {
       <div className="app-wrapper">
         {/* Navigation */}
         <nav className="main-nav">
-          <Link to="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
-            <img
-              src="/hiring-signals -logo.png"
-              alt="HiringSignals.ai"
-              style={{ height: '36px', display: 'block' }}
-            />
+          <Link to="/" style={{ textDecoration: 'none', flexShrink: 0, lineHeight: 1 }}>
+            <span style={{ fontSize: '1.45rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'white' }}>
+              HIRING <span style={{ fontStyle: 'italic' }}>SIGNALS</span><span style={{ color: '#60a5fa' }}>.ai</span>
+            </span>
           </Link>
           <div className="nav-links" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
             <Link to="/">Home</Link>
