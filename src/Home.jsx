@@ -123,6 +123,28 @@ const Home = () => (
         siloed.
       </p>
 
+      {/* Essay callout */}
+      <a
+        href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "inline-flex", alignItems: "center", gap: "10px",
+          background: "rgba(255,255,255,0.05)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          borderRadius: "10px", padding: "12px 22px",
+          textDecoration: "none", marginBottom: "2rem",
+          position: "relative", transition: "border-color 0.2s",
+        }}
+      >
+        <span style={{ fontSize: "0.78rem", color: "#64748B", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>Essay</span>
+        <span style={{ width: 1, height: 14, background: "rgba(255,255,255,0.15)", display: "inline-block" }} />
+        <span style={{ fontSize: "0.88rem", color: "#CBD5E1", fontWeight: 500 }}>
+          Read the full essay on i-DIG.io
+        </span>
+        <span style={{ fontSize: "0.85rem", color: t.indigoLight }}>↗</span>
+      </a>
+
       <div style={{
         display: "flex", gap: "1rem", justifyContent: "center",
         flexWrap: "wrap", position: "relative",
