@@ -48,6 +48,33 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/audit" element={<SignalAudit />} />
         </Routes>
+
+        {/* Footer */}
+        <footer style={{
+          background: '#0A1628',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          padding: '1.25rem 2.5rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '6px',
+        }}>
+          <span style={{ fontSize: '0.75rem', color: '#475569', letterSpacing: '0.05em' }}>
+            Powered by
+          </span>
+          <a
+            href="https://www.i-dig.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontSize: '0.75rem', fontWeight: 700,
+              color: '#818CF8', textDecoration: 'none',
+              letterSpacing: '0.05em',
+            }}
+          >
+            i-DIG.io
+          </a>
+        </footer>
       </div>
     </Router>
   );
