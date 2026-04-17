@@ -174,7 +174,7 @@ const Home = () => (
         color: "#334155", fontStyle: "italic",
         position: "relative",
       }}>
-        Led by Paul Duplantis — version 0.1 of an ongoing experiment.
+        Led by J. Paul Duplantis — version 0.1 of an ongoing experiment.
       </p>
     </section>
 
@@ -349,7 +349,7 @@ const Home = () => (
             hiring isn't a Big Data problem — it is an access and alignment problem."
           </p>
           <p style={{ margin: "10px 0 0", fontSize: "0.78rem", color: "#475569" }}>
-            — Paul Duplantis,{" "}
+            — J. Paul Duplantis,{" "}
             <a
               href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
               target="_blank"
@@ -680,7 +680,7 @@ const Home = () => (
           it is a signal to be discovered."
         </blockquote>
         <p style={{ fontSize: "0.88rem", color: t.text500, margin: 0 }}>
-          Paul Duplantis —{" "}
+          J. Paul Duplantis —{" "}
           <a
             href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
             target="_blank"

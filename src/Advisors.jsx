@@ -34,7 +34,7 @@ const Advisors = () => {
             }}>
               <img 
                 src={paulPhoto} 
-                alt="Paul Duplantis" 
+                alt="J. Paul Duplantis" 
                 style={{ width: '100%', display: 'block' }} 
               />
             </div>
@@ -66,7 +66,7 @@ const Advisors = () => {
 
           {/* Wrapped Text Content */}
           <div className="architect-info">
-            <h2 style={{ fontSize: '2.4rem', marginBottom: '4px' }}>Paul Duplantis</h2>
+            <h2 style={{ fontSize: '2.4rem', marginBottom: '4px' }}>J. Paul Duplantis</h2>
             <p style={{ 
               color: '#3B82F6', 
               fontSize: '1.1rem', 
