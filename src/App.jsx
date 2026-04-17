@@ -26,12 +26,9 @@ export default function App() {
         <nav className="main-nav">
           <div className="nav-links">
             <Link to="/">Home</Link>
-            <Link to="/directory">Provider Directory</Link>
-            <Link to="/case-studies">Case Studies</Link>
             <Link to="/advisors">About Paul</Link>
             <Link to="/contact">Contact</Link>
           </div>
-          <Link to="/audit" className="nav-cta" style={{ textDecoration: 'none' }}>Signal Audit</Link>
         </nav>
 
         {/* Route Content */}
