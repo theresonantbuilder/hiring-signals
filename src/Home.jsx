@@ -71,10 +71,10 @@ const Home = () => (
       }} />
       {/* Soft glow */}
       <div style={{
-        position: "absolute", top: "30%", left: "50%",
+        position: "absolute", top: "40%", left: "50%",
         transform: "translate(-50%, -50%)",
         width: "600px", height: "400px",
-        background: "radial-gradient(ellipse, rgba(79,70,229,0.18) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse, rgba(79,70,229,0.16) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
 
@@ -83,7 +83,7 @@ const Home = () => (
         display: "inline-flex", alignItems: "center", gap: "8px",
         border: `1px solid rgba(129,140,248,0.35)`,
         borderRadius: "999px", padding: "6px 20px",
-        marginBottom: "3rem",
+        marginBottom: "2.5rem",
         background: "rgba(79,70,229,0.1)",
         position: "relative",
       }}>
@@ -101,49 +101,26 @@ const Home = () => (
         </span>
       </div>
 
-      {/* The 2TB stat */}
-      <p style={{
-        fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.22em",
-        textTransform: "uppercase", color: "#475569",
-        margin: "0 0 0.75rem", position: "relative",
-      }}>
-        The 2-Terabyte Reality
-      </p>
       <h1 style={{
-        fontSize: "clamp(5rem, 14vw, 10rem)",
-        fontWeight: 900, margin: "0 0 1.75rem",
-        letterSpacing: "-0.04em", lineHeight: 1,
-        background: "linear-gradient(135deg, #FFFFFF 35%, #818CF8 100%)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        backgroundClip: "text",
+        fontSize: "clamp(2rem, 5vw, 3.5rem)",
+        fontWeight: 800, margin: "0 0 1.5rem",
+        letterSpacing: "-0.03em", lineHeight: 1.15,
+        color: t.white,
         position: "relative",
       }}>
-        2 TB.
+        The New Architecture<br />of Talent Alignment
       </h1>
 
       <p style={{
-        fontSize: "clamp(1.1rem, 2.8vw, 1.5rem)",
-        color: "#CBD5E1", maxWidth: "680px",
-        margin: "0 auto 1.25rem", lineHeight: 1.65, fontWeight: 400,
+        fontSize: "clamp(1rem, 2.2vw, 1.25rem)",
+        color: "#94A3B8", maxWidth: "600px",
+        margin: "0 auto 2.5rem", lineHeight: 1.75,
         position: "relative",
       }}>
-        The entire professional potential of the United States — every resume,
-        every career arc — fits on a{" "}
-        <em>single consumer hard drive.</em>
-      </p>
-
-      <p style={{
-        fontSize: "1.05rem", color: "#94A3B8",
-        maxWidth: "560px", margin: "0 auto 3rem",
-        lineHeight: 1.75, position: "relative",
-      }}>
-        This was never a <em>Big Data</em> problem.
-        It is an{" "}
-        <strong style={{ color: "#E2E8F0", fontWeight: 600 }}>
-          access and alignment
-        </strong>{" "}
-        problem — and proprietary silos are the reason signal degrades.
+        HiringSignals.ai is a living laboratory exploring how open-source
+        protocols can more effectively align human potential with opportunity —
+        by treating talent as a signal to be discovered, not a resource to be
+        siloed.
       </p>
 
       <div style={{
@@ -175,8 +152,7 @@ const Home = () => (
         color: "#334155", fontStyle: "italic",
         position: "relative",
       }}>
-        A living laboratory led by Paul Duplantis — exploring how open-source
-        protocols can realign human potential with opportunity.
+        Led by Paul Duplantis — version 0.1 of an ongoing experiment.
       </p>
     </section>
 
@@ -276,6 +252,83 @@ const Home = () => (
               }}>{card.body}</p>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+
+    {/* ══ THE 2TB REALITY ═══════════════════════════════════════════════ */}
+    <section style={{
+      background: `linear-gradient(150deg, ${t.navyDeep} 0%, #0F1E3C 55%, #131040 100%)`,
+      padding: "6rem 2rem",
+      textAlign: "center",
+      position: "relative",
+      overflow: "hidden",
+    }}>
+      <div style={{
+        position: "absolute", inset: 0, pointerEvents: "none",
+        backgroundImage: `radial-gradient(rgba(129,140,248,0.07) 1px, transparent 1px)`,
+        backgroundSize: "36px 36px",
+      }} />
+      <div style={{
+        position: "absolute", top: "50%", left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "700px", height: "400px",
+        background: "radial-gradient(ellipse, rgba(79,70,229,0.2) 0%, transparent 70%)",
+        pointerEvents: "none",
+      }} />
+
+      <div style={{ position: "relative", maxWidth: "800px", margin: "0 auto" }}>
+        <p style={{
+          fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.22em",
+          textTransform: "uppercase", color: "#475569",
+          margin: "0 0 0.75rem",
+        }}>
+          The 2-Terabyte Reality
+        </p>
+        <h2 style={{
+          fontSize: "clamp(5rem, 14vw, 10rem)",
+          fontWeight: 900, margin: "0 0 1.75rem",
+          letterSpacing: "-0.04em", lineHeight: 1,
+          background: "linear-gradient(135deg, #FFFFFF 35%, #818CF8 100%)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        }}>
+          2 TB.
+        </h2>
+        <p style={{
+          fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
+          color: "#CBD5E1", maxWidth: "640px",
+          margin: "0 auto 1.25rem", lineHeight: 1.65,
+        }}>
+          The entire professional potential of the United States — every resume,
+          every career arc — fits on a <em>single consumer hard drive.</em>
+        </p>
+        <p style={{
+          fontSize: "1.05rem", color: "#94A3B8",
+          maxWidth: "520px", margin: "0 auto 2.5rem", lineHeight: 1.75,
+        }}>
+          This was never a <em>Big Data</em> problem. It is an{" "}
+          <strong style={{ color: "#E2E8F0", fontWeight: 600 }}>
+            access and alignment
+          </strong>{" "}
+          problem — and proprietary silos are the reason signal degrades.
+        </p>
+        <div style={{
+          display: "inline-block",
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(129,140,248,0.25)",
+          borderRadius: "12px", padding: "18px 28px",
+          maxWidth: "560px",
+        }}>
+          <p style={{ margin: 0, fontSize: "0.9rem", color: t.indigoLight, lineHeight: 1.7, fontStyle: "italic" }}>
+            "The collective professional potential of an entire nation can fit
+            on a single, consumer-grade external drive. The challenge of modern
+            hiring isn't a Big Data problem — it is an access and alignment problem."
+          </p>
+          <p style={{ margin: "10px 0 0", fontSize: "0.78rem", color: "#475569" }}>
+            — Paul Duplantis, <em>The New Architecture of Talent Alignment</em>
+          </p>
         </div>
       </div>
     </section>
@@ -494,7 +547,6 @@ const Home = () => (
           </p>
         </div>
 
-        {/* Two state cards */}
         <div style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -638,9 +690,9 @@ const Home = () => (
 
           <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
             {[
-              { icon: "◈", color: t.sky, label: "W3C Solid Pod", desc: "Personal data stores under individual control — a proposed foundation layer" },
-              { icon: "◈", color: t.violet, label: "IndexedDB Storage", desc: "Encrypted on-device storage as an alternative — no server required" },
-              { icon: "◈", color: t.green, label: "Zero sharing without consent", desc: "The protocol would match; the individual decides disclosure" },
+              { icon: "◈", color: t.sky,    label: "W3C Solid Pod",               desc: "Personal data stores under individual control — a proposed foundation layer" },
+              { icon: "◈", color: t.violet, label: "IndexedDB Storage",            desc: "Encrypted on-device storage as an alternative — no server required" },
+              { icon: "◈", color: t.green,  label: "Zero sharing without consent", desc: "The protocol would match; the individual decides disclosure" },
             ].map((item, i) => (
               <div key={i} style={{
                 display: "flex", alignItems: "flex-start", gap: "14px",
