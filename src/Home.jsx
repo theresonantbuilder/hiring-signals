@@ -327,7 +327,15 @@ const Home = () => (
             hiring isn't a Big Data problem — it is an access and alignment problem."
           </p>
           <p style={{ margin: "10px 0 0", fontSize: "0.78rem", color: "#475569" }}>
-            — Paul Duplantis, <em>The New Architecture of Talent Alignment</em>
+            — Paul Duplantis,{" "}
+            <a
+              href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: t.indigoLight, textDecoration: "none", fontStyle: "italic" }}
+            >
+              The New Architecture of Talent Alignment ↗
+            </a>
           </p>
         </div>
       </div>
@@ -651,7 +659,14 @@ const Home = () => (
         </blockquote>
         <p style={{ fontSize: "0.88rem", color: t.text500, margin: 0 }}>
           Paul Duplantis —{" "}
-          <em>The New Architecture of Talent Alignment</em>
+          <a
+            href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: t.blue, textDecoration: "none" }}
+          >
+            <em>The New Architecture of Talent Alignment</em> ↗
+          </a>
         </p>
       </div>
     </section>
