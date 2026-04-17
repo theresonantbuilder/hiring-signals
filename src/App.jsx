@@ -4,7 +4,7 @@ import Home from "./Home";
 import Methodology from "./Methodology";
 import Services from "./Services";
 import CaseStudies from "./CaseStudies";
-import Advisors from "./Advisors";
+import About from "./About";
 import Contact from "./Contact";
 import SignalAudit from "./SignalAudit";
 
@@ -31,7 +31,7 @@ export default function App() {
           </Link>
           <div className="nav-links" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>
             <Link to="/">Home</Link>
-            <Link to="/advisors">About Paul</Link>
+            <Link to="/about">About J. Paul</Link>
             <Link to="/contact">Contact</Link>
           </div>
           {/* Spacer to balance the logo on the right */}
@@ -44,7 +44,7 @@ export default function App() {
           <Route path="/methodology" element={<Methodology />} />
           <Route path="/directory" element={<Services />} />
           <Route path="/case-studies" element={<CaseStudies />} />
-          <Route path="/advisors" element={<Advisors />} />
+          <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/audit" element={<SignalAudit />} />
         </Routes>

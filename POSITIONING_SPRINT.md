@@ -41,6 +41,13 @@ A short section that connects HiringSignals explicitly to the iDIG protocol — 
 
 This is honest, it's interesting, and it differentiates from every other recruiting site on the internet.
 
+**Theoretical anchor — Alexander Wendt:**
+The intellectual foundation sits in Alexander Wendt's *Quantum Mind and Social Science* — the argument that human consciousness and social behavior cannot be accurately modeled using classical mechanics. Traditional hiring tools do exactly that: they treat candidates as classical particles with fixed, measurable attributes. The iDIG protocol applies quantum social science to the hiring funnel — using Hilbert Space vector math (the same mathematical structure Wendt uses to model social states) to surface direction and alignment rather than surface-level similarity.
+
+This reference belongs one layer beneath the home page — a short callout in The Lab Connection section, linking out to The Resonant Builders post where the full argument is developed. Keep the home page in the practitioner voice. Let the theory live in the blog.
+
+> *Reference: Alexander Wendt, Quantum Mind and Social Science (2015) — [The Awakening blog](https://www.youtube.com/watch?v=WpkhPgpY28M)*
+
 ### 4. The Resonant Builders Link
 A subtle but clear connection — Paul writes about the hiring signal problem in The Resonant Builders. This section invites visitors into that conversation. Not a sales pitch — an invitation to think alongside the build.
 
