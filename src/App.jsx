@@ -25,8 +25,8 @@ export default function App() {
         {/* Navigation */}
         <nav className="main-nav">
           <Link to="/" style={{ textDecoration: 'none', flexShrink: 0, lineHeight: 1 }}>
-            <span style={{ fontSize: '1.45rem', fontWeight: 700, letterSpacing: '-0.03em', color: 'white' }}>
-              HIRING <span style={{ fontStyle: 'italic' }}>SIGNALS</span><span style={{ color: '#60a5fa' }}>.ai</span>
+            <span style={{ fontSize: '1.45rem', fontWeight: 700, letterSpacing: '-0.03em', color: '#0F172A' }}>
+              HIRING <span style={{ fontStyle: 'italic' }}>SIGNALS</span><span style={{ color: '#4F46E5' }}>.ai</span>
             </span>
           </Link>
           <div className="nav-links" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}>

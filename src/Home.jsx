@@ -58,7 +58,7 @@ const Home = () => (
     {/* ══ HERO ══════════════════════════════════════════════════════════ */}
     <section style={{
       background: `linear-gradient(150deg, ${t.navyDeep} 0%, #0F1E3C 55%, #131040 100%)`,
-      padding: "7rem 2rem 8rem",
+      padding: "3rem 2rem 8rem",
       textAlign: "center",
       position: "relative",
       overflow: "hidden",

@@ -57,8 +57,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2.5rem;
-  background-color: #0A1628;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .nav-links {
@@ -67,23 +67,23 @@ body {
 }
 
 .nav-links a {
-  color: white;
+  color: #334155;
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
 .nav-links a:hover {
-  color: #93c5fd;
+  color: #4F46E5;
 }
 
 .nav-cta {
-  border: 1px solid var(--accent-blue);
+  border: 1px solid #4F46E5;
   background: transparent;
-  color: white;
+  color: #4F46E5;
   padding: 0.5rem 1.25rem;
   border-radius: 0.375rem;
   font-size: 0.85rem;
@@ -95,7 +95,7 @@ body {
 }
 
 .nav-cta:hover {
-  background: var(--accent-blue-dim);
+  background: #EEF2FF;
 }
 
 /* Hero Section */
