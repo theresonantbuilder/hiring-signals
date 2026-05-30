@@ -123,52 +123,6 @@ const Home = () => (
         siloed.
       </p>
 
-      {/* Essay callout */}
-      <a
-        href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          display: "inline-flex", alignItems: "center", gap: "10px",
-          background: "rgba(255,255,255,0.05)",
-          border: "1px solid rgba(255,255,255,0.12)",
-          borderRadius: "10px", padding: "12px 22px",
-          textDecoration: "none", marginBottom: "2rem",
-          position: "relative", transition: "border-color 0.2s",
-        }}
-      >
-        <span style={{ fontSize: "0.78rem", color: "#64748B", textTransform: "uppercase", letterSpacing: "0.12em", fontWeight: 700 }}>Essay</span>
-        <span style={{ width: 1, height: 14, background: "rgba(255,255,255,0.15)", display: "inline-block" }} />
-        <span style={{ fontSize: "0.88rem", color: "#CBD5E1", fontWeight: 500 }}>
-          Read the full essay on i-DIG.io
-        </span>
-        <span style={{ fontSize: "0.85rem", color: t.indigoLight }}>↗</span>
-      </a>
-
-      <div style={{
-        display: "flex", gap: "1rem", justifyContent: "center",
-        flexWrap: "wrap", position: "relative",
-      }}>
-        <Link to="/methodology" style={{
-          display: "inline-block", padding: "14px 32px",
-          background: t.indigo, color: "white",
-          fontWeight: 700, borderRadius: "8px",
-          textDecoration: "none", fontSize: "0.88rem",
-          letterSpacing: "0.04em",
-        }}>
-          Explore the Protocol
-        </Link>
-        <Link to="/contact" style={{
-          display: "inline-block", padding: "14px 32px",
-          border: "1px solid rgba(255,255,255,0.15)",
-          color: "#CBD5E1", fontWeight: 600, borderRadius: "8px",
-          textDecoration: "none", fontSize: "0.88rem",
-          letterSpacing: "0.04em",
-        }}>
-          Start a Conversation
-        </Link>
-      </div>
-
       <p style={{
         marginTop: "3rem", fontSize: "0.82rem",
         color: "#334155", fontStyle: "italic",
@@ -278,7 +232,7 @@ const Home = () => (
       </div>
     </section>
 
-    {/* ══ THE 2TB REALITY ═══════════════════════════════════════════════ */}
+    {/* ══ THE 10TB REALITY ══════════════════════════════════════════════ */}
     <section style={{
       background: `linear-gradient(150deg, ${t.navyDeep} 0%, #0F1E3C 55%, #131040 100%)`,
       padding: "6rem 2rem",
@@ -305,7 +259,7 @@ const Home = () => (
           textTransform: "uppercase", color: "#475569",
           margin: "0 0 0.75rem",
         }}>
-          The 2-Terabyte Reality
+          The 10-Terabyte Reality
         </p>
         <h2 style={{
           fontSize: "clamp(5rem, 14vw, 10rem)",
@@ -316,15 +270,16 @@ const Home = () => (
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
         }}>
-          2 TB.
+          10 TB.
         </h2>
         <p style={{
           fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
           color: "#CBD5E1", maxWidth: "640px",
           margin: "0 auto 1.25rem", lineHeight: 1.65,
         }}>
-          The entire professional potential of the United States — every resume,
-          every career arc — fits on a <em>single consumer hard drive.</em>
+          If every active professional resume in the United States were parsed
+          into clean, structured data, the entire collection would fit on a{" "}
+          <em>single consumer hard drive.</em>
         </p>
         <p style={{
           fontSize: "1.05rem", color: "#94A3B8",
@@ -344,9 +299,10 @@ const Home = () => (
           maxWidth: "560px",
         }}>
           <p style={{ margin: 0, fontSize: "0.9rem", color: t.indigoLight, lineHeight: 1.7, fontStyle: "italic" }}>
-            "The collective professional potential of an entire nation can fit
-            on a single, consumer-grade external drive. The challenge of modern
-            hiring isn't a Big Data problem — it is an access and alignment problem."
+            "If parsed into clean, structured data, the collective professional
+            potential of an entire nation fits on a single consumer-grade drive.
+            The challenge of modern hiring isn't a Big Data problem — it is an
+            access and alignment problem."
           </p>
           <p style={{ margin: "10px 0 0", fontSize: "0.78rem", color: "#475569" }}>
             — J. Paul Duplantis,{" "}

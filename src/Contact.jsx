@@ -59,7 +59,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://formsubmit.co/ajax/paul@hiringsignals.ai", {
+      const response = await fetch("https://formsubmit.co/ajax/paul@i-dig.io", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
