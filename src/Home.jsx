@@ -635,17 +635,6 @@ const Home = () => (
           "Talent is no longer a resource to be siloed —<br />
           it is a signal to be discovered."
         </blockquote>
-        <p style={{ fontSize: "0.88rem", color: t.text500, margin: 0 }}>
-          J. Paul Duplantis —{" "}
-          <a
-            href="https://www.i-dig.io/theresonantbuilders/the-new-architecture"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: t.blue, textDecoration: "none" }}
-          >
-            <em>The New Architecture of Talent Alignment</em> ↗
-          </a>
-        </p>
       </div>
     </section>
 
